@@ -1,0 +1,20 @@
+{
+  "name": "stipsan.me",
+  "version": "1.0.0",
+  "description": "My own personal website, don't really need one but it's a good excuse to try new tools and experiment. Maybe others learn a thing or two by keeping the source public :-)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stipsan/stipsan.me.git"
+  },
+  "keywords": [],
+  "author": "Stian Didriksen <stipsan@gmail.com> (https://stipsan.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stipsan/stipsan.me/issues"
+  },
+  "homepage": "https://github.com/stipsan/stipsan.me#readme"
+}
