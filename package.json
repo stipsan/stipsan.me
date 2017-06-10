@@ -4,7 +4,8 @@
   "description": "My own personal website, don't really need one but it's a good excuse to try new tools and experiment. Maybe others learn a thing or two by keeping the source public :-)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/stipsan/stipsan.me/issues"
   },
-  "homepage": "https://github.com/stipsan/stipsan.me#readme"
+  "homepage": "https://github.com/stipsan/stipsan.me#readme",
+  "dependencies": {
+    "next": "^2.4.3",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  }
 }
