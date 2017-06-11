@@ -6,7 +6,7 @@ import faker from 'faker'
 
 export default ({ url }) =>
   <Layout url={url}>
-    <Helmet title="About" />
+    <Helmet title="Projects" />
     <Mock />
-    <p>This is the about page</p>
+    <p>Projects I'm involved in</p>
   </Layout>

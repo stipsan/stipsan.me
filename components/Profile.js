@@ -3,9 +3,6 @@ import Avatar from './Avatar'
 
 const Wrapper = styled.section`
 padding: 80px 40px 0;
-max-width: 600px;
-margin: 0 auto;
-text-align: center;
 `
 
 const Header = styled.h1`
@@ -20,7 +17,7 @@ const Subheader = styled.h2`
   font-size: 20px;
   font-weight: 300;
   color: #aaa;
-  margin-top: 20px;
+  margin-top: 40px;
   position: relative;
 
   & span:first-child,
@@ -30,12 +27,14 @@ const Subheader = styled.h2`
 
   & span:first-child {
     right: 50%;
-    margin-right: 32px;
+    margin-right: 48px;
+    text-align: right;
   }
 
   & span:last-child {
     left: 50%;
-    margin-left: 32px;
+    margin-left: 48px;
+    text-align: left;
   }
 `
 

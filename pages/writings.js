@@ -2,7 +2,7 @@ import Layout from '../components/Layout'
 import Mock from '../components/Mock'
 
 export default props =>
-  <Layout>
+  <Layout url={props.url}>
     <h1>{props.url.query.title}</h1>
     <div className="markdown">
       <Mock />

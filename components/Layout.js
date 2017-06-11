@@ -6,6 +6,11 @@ import Menu from './Menu'
 import { initGA, logPageView } from '../utils/analytics'
 
 injectGlobal`
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+
   body {
     font-family: ${systemFontStack};
   }
@@ -20,6 +25,10 @@ const Wrapper = styled.section`
 `
 
 export default class Layout extends React.Component {
+  static defaultProps = {
+    isIndex: false,
+  }
+
   componentDidMount() {
     if (!process.env.TRACKING_ID) {
       // bail out if env var isn't set
@@ -34,10 +43,11 @@ export default class Layout extends React.Component {
   render() {
     return (
       <Wrapper>
+        <div id="top" />
         <Meta />
         <Header />
-        <div id="top" />
-        <Menu />
+        <div id="content" />
+        <Menu url={this.props.url} />
         {this.props.children}
       </Wrapper>
     )

@@ -31,8 +31,8 @@ const PostLink = ({ post }) =>
     `}</style>
   </li>
 
-export default () =>
-  <Layout>
+export default ({ url }) =>
+  <Layout url={url}>
     <h1>My Blog</h1>
     <ul>
       {getPosts().map(post => <PostLink key={post.id} post={post} />)}
