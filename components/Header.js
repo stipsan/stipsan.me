@@ -1,16 +1,17 @@
+import styled from 'styled-components'
 import Link from 'next/link'
 
-const linkStyle = {
-  marginRight: 15,
-}
+const StyledNav = styled.span`
+  margin-right: 15px;
+`
 
 const Header = () =>
   <div>
     <Link href="/">
-      <a style={linkStyle}>Home</a>
+      <a><StyledNav>Home</StyledNav></a>
     </Link>
     <Link href="/about">
-      <a style={linkStyle}>About</a>
+      <a><StyledNav>About</StyledNav></a>
     </Link>
   </div>
 

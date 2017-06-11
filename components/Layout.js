@@ -1,11 +1,12 @@
+import styled from 'styled-components'
 import Header from './Header'
 import { initGA, logPageView } from '../utils/analytics'
 
-const layoutStyle = {
-  margin: 20,
-  padding: 20,
-  border: '1px solid #DDD',
-}
+const Wrapper = styled.section`
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #DDD;
+`
 
 export default class Layout extends React.Component {
   componentDidMount() {
@@ -17,10 +18,10 @@ export default class Layout extends React.Component {
   }
   render() {
     return (
-      <div style={layoutStyle}>
+      <Wrapper>
         <Header />
         {this.props.children}
-      </div>
+      </Wrapper>
     )
   }
 }
