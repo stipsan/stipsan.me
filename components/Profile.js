@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Avatar from './Avatar'
+import Logo from '../svgs/logo.svg'
 
 const Wrapper = styled.section`
 padding: 80px 40px 0;
@@ -27,14 +28,44 @@ const Subheader = styled.h2`
 
   & span:first-child {
     right: 50%;
-    margin-right: 48px;
+    margin-right: 40px;
     text-align: right;
   }
 
   & span:last-child {
     left: 50%;
-    margin-left: 48px;
+    margin-left: 40px;
     text-align: left;
+  }
+`
+
+const size = 64
+const LogoLink = styled.a.attrs({
+  href: 'https://24nettbutikk.no/',
+  title: "24Nettbutikk.no - Norway's favorite ecommerce platform",
+  target: '_blank',
+})`
+  display: inline-block;
+  transform: translateY(-25px);
+  height: ${size}px;
+  width: ${size}px;
+  & svg {
+    height: inherit;
+    width: inherit;
+  }
+
+  & svg path {
+    transition: fill 150ms linear;
+  }
+  & svg path:last-child {
+    transition-delay: 37.5ms;
+  }
+  &:not(:hover) svg path:first-child {
+    fill: hsla(240, 1%, 30%, 0.25);
+  }
+  &:not(:hover) svg path:last-child {
+
+    fill: hsla(98, 0%, 52%, 0.25);
   }
 `
 
@@ -44,7 +75,9 @@ export default () =>
     <Header>Stian Didriksen</Header>
     <Subheader>
       <span>Frontend Engineer at</span>
-      24
+      <LogoLink>
+        <Logo />
+      </LogoLink>
       <span>the Future of Commerce</span>
     </Subheader>
   </Wrapper>
