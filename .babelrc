@@ -8,7 +8,7 @@
   ],
   "env": {
     "production": {
-      "plutins": [
+      "plugins": [
         ["styled-components", { "ssr": true, "displayName": false, "minify": true, "preprocess": false } ]
       ]
     },
