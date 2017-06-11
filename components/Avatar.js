@@ -22,12 +22,13 @@ const Wrapper = styled.span`
   margin-bottom: 20px;
   position: relative;
 
-  & img, &::before {
+  & img {
     display: block;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
+    border-radius: 50%;
     position: absolute;
     height: ${size}px;
     width: ${size}px;
