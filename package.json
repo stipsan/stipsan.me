@@ -10,6 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "now": {
+    "public": true,
     "alias": "stipsan.me",
     "env": {
       "NODE_ENV": "production"
