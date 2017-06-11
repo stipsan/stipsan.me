@@ -2,17 +2,21 @@ import styled, { injectGlobal } from 'styled-components'
 import systemFontStack from 'system-font-stack'
 import Header from './Header'
 import Meta from './Meta'
+import Menu from './Menu'
 import { initGA, logPageView } from '../utils/analytics'
 
 injectGlobal`
   body {
     font-family: ${systemFontStack};
   }
+
+  * {
+    box-sizing: border-box;
+  }
 `
 
 const Wrapper = styled.section`
-  margin: 20px;
-  padding: 20px;
+  background: white;
 `
 
 export default class Layout extends React.Component {
@@ -32,6 +36,8 @@ export default class Layout extends React.Component {
       <Wrapper>
         <Meta />
         <Header />
+        <div id="top" />
+        <Menu />
         {this.props.children}
       </Wrapper>
     )
