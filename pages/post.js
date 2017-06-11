@@ -1,4 +1,4 @@
-import Layout from '../components/MyLayout.js'
+import Layout from '../components/Layout.js'
 import dynamic from 'next/dynamic'
 
 const Markdown = dynamic(import('react-markdown'))

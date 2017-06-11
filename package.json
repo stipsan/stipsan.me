@@ -14,7 +14,8 @@
     "public": true,
     "alias": "stipsan.me",
     "env": {
-      "NODE_ENV": "production"
+      "NODE_ENV": "production",
+      "TRACKING_ID": "@tracking-id"
     }
   },
   "repository": {
