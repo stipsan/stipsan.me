@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Header from './Header'
+import Meta from './Meta'
 import { initGA, logPageView } from '../utils/analytics'
 
 const Wrapper = styled.section`
@@ -19,6 +20,7 @@ export default class Layout extends React.Component {
   render() {
     return (
       <Wrapper>
+        <Meta />
         <Header />
         {this.props.children}
       </Wrapper>
