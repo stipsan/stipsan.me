@@ -31,20 +31,17 @@ const Wrapper = styled.span`
     position: absolute;
     height: ${size}px;
     width: ${size}px;
-    transition: all 1500ms ease-in-out;
-    filter: blur(${props => (props.imageDidLoad ? 0 : 20)}px);
+    transition: all 200ms ease-out;
+    filter: blur(${props => (props.imageDidLoad ? 0 : 8)}px);
     will-change: opacity, filter;
   }
 
   & img:first-child {
-    content: url(${getGravatarUrl(4)});
-    /*opacity: ${props => (props.imageDidLoad ? 0 : 1)};*/
-    clip: rect(0px,80px,80px,40px);
+    opacity: ${props => (props.imageDidLoad ? 0 : 1)};
     image-rendering: pixelated;
   }
   & img:last-child {
-    /*opacity: ${props => (props.imageDidLoad ? 1 : 0)};*/
-    clip: rect(0px,40px,80px,0px);
+    opacity: ${props => (props.imageDidLoad ? 1 : 0)};
   }
 `
 
