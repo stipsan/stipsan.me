@@ -1,5 +1,7 @@
 import Layout from '../components/MyLayout.js'
-import Markdown from 'react-markdown'
+import dynamic from 'next/dynamic'
+
+const Markdown = dynamic(import('react-markdown'))
 
 export default props =>
   <Layout>
