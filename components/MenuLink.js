@@ -7,7 +7,7 @@ const Link = styled.a`
   color: ${props => (props.isActive ? 'white' : '#0f0f0f')};
   background-color: ${props => (props.isActive ? '#0f0f0f' : 'transparent')};
   display: inline-block;
-  margin-left: 24px;
+  margin-left: 0 12px;
   padding: 3px 8px 4px 8px;
   text-transform: uppercase;
   border-radius: 4px;

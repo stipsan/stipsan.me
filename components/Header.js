@@ -9,7 +9,7 @@ const Wrapper = styled.div`
 
 const Hr = styled.hr`
   display: block;
-  margin: 60px 100px;
+  margin: 60px 100px 80px;
   border-color: whitesmoke;
   border-style: solid;
   border-width: 4px;

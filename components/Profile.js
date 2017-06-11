@@ -30,6 +30,7 @@ const Subheader = styled.h2`
     right: 50%;
     margin-right: 40px;
     text-align: right;
+    letter-spacing: 1px;
   }
 
   & span:last-child {
