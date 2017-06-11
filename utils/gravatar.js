@@ -1,5 +1,5 @@
 import querystring from 'querystring'
-import md5Hex from 'md5-hex'
+import md5Hex from 'md5-o-matic'
 
 const BASE_URL = 'https://gravatar.com/avatar/'
 
