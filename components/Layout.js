@@ -1,7 +1,14 @@
-import styled from 'styled-components'
+import styled, { injectGlobal } from 'styled-components'
+import systemFontStack from 'system-font-stack'
 import Header from './Header'
 import Meta from './Meta'
 import { initGA, logPageView } from '../utils/analytics'
+
+injectGlobal`
+  body {
+    font-family: ${systemFontStack};
+  }
+`
 
 const Wrapper = styled.section`
   margin: 20px;

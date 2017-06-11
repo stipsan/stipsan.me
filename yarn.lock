@@ -3402,6 +3402,10 @@ supports-color@^3.1.0, supports-color@^3.2.3:
   dependencies:
     has-flag "^1.0.0"
 
+system-font-stack@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/system-font-stack/-/system-font-stack-1.0.0.tgz#1083c2e252e347c132c725871f738aec75f31e83"
+
 tapable@^0.2.5, tapable@~0.2.5:
   version "0.2.6"
   resolved "https://registry.yarnpkg.com/tapable/-/tapable-0.2.6.tgz#206be8e188860b514425375e6f1ae89bfb01fd8d"
