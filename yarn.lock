@@ -1742,12 +1742,6 @@ graceful-fs@^4.1.2, graceful-fs@^4.1.4:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
 
-gravatar-url@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/gravatar-url/-/gravatar-url-2.0.0.tgz#d68ecdb3639ddeb409d1d54c0e8708f3a9b02db7"
-  dependencies:
-    md5-hex "^2.0.0"
-
 har-schema@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/har-schema/-/har-schema-1.0.5.tgz#d263135f43307c02c602afc8fe95970c0151369e"
@@ -2229,7 +2223,7 @@ md5-file@3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/md5-file/-/md5-file-3.1.1.tgz#db3c92c09bbda5c2de883fa5490dd711fddbbab9"
 
-md5-hex@^2.0.0:
+md5-hex@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/md5-hex/-/md5-hex-2.0.0.tgz#d0588e9f1c74954492ecd24ac0ac6ce997d92e33"
   dependencies:

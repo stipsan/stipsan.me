@@ -1,4 +1,4 @@
-import gravatarUrl from 'gravatar-url'
+import gravatarUrl from './gravatar'
 
 const getGravatarUrl = size => gravatarUrl('stipsan@gmail.com', { size })
 
