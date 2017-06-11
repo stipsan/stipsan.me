@@ -1,23 +1,11 @@
-import Layout from '../components/Layout.js'
-import dynamic from 'next/dynamic'
-
-const Markdown = dynamic(import('react-markdown'))
+import Layout from '../components/Layout'
+import Mock from '../components/Mock'
 
 export default props =>
   <Layout>
     <h1>{props.url.query.title}</h1>
     <div className="markdown">
-      <Markdown
-        source={`
-This is our blog post.
-Yes. We can have a [link](/link).
-And we can have a title as well.
-
-### This is a title
-
-And here's the content.
-     `}
-      />
+      <Mock />
     </div>
     <style jsx global>{`
       .markdown {

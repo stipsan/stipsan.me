@@ -1,5 +1,6 @@
-import Layout from '../components/Layout.js'
+import Layout from '../components/Layout'
 import Link from 'next/link'
+import Mock from '../components/Mock'
 
 function getPosts() {
   return [
@@ -11,7 +12,7 @@ function getPosts() {
 
 const PostLink = ({ post }) =>
   <li>
-    <Link as={`/p/${post.id}`} href={`/post?title=${post.title}`}>
+    <Link href={`/post?title=${post.title}#top`}>
       <a>{post.title}</a>
     </Link>
     <style jsx>{`
@@ -55,4 +56,5 @@ export default () =>
         opacity: 0.6;
       }
     `}</style>
+    <Mock />
   </Layout>
