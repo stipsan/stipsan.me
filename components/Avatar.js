@@ -46,23 +46,25 @@ const Wrapper = styled.span`
   }
 `
 
+let imageDidLoad = false
 const src = getGravatarUrl(size * ratio)
 export default class Avatar extends Component {
-  state = { imageDidLoad: false }
-
   componentDidMount() {
     if ('Image' in global) {
       const img = new Image()
-      img.onload = () => this.setState({ imageDidLoad: true })
+      img.onload = () => {
+        imageDidLoad = true
+        this.forceUpdate()
+      }
       img.src = src
     }
   }
 
   render() {
     return (
-      <Wrapper imageDidLoad={this.state.imageDidLoad}>
+      <Wrapper imageDidLoad={imageDidLoad}>
         <img src={getGravatarUrl(8)} />
-        <img src={this.state.imageDidLoad ? src : undefined} />
+        <img src={imageDidLoad ? src : undefined} />
       </Wrapper>
     )
   }
