@@ -5,7 +5,7 @@ import getGravatarUrl from '../utils/gravatar'
 const ratio = getDevicePixelRatio()
 
 const size = 80
-const StyledImg = styled.img`
+export const StyledImg = styled.img`
   border-radius: 50%;
   height: ${size}px;
   width: ${size}px;
