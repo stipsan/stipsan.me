@@ -11,6 +11,10 @@ const Wrapper = styled.section`
 
 export default class Layout extends React.Component {
   componentDidMount() {
+    if (!process.env.TRACKING_ID) {
+      // bail out if env var isn't set
+      return
+    }
     if (!window.GA_INITIALIZED) {
       initGA()
       window.GA_INITIALIZED = true
