@@ -1,7 +1,6 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 import Helmet from 'react-helmet'
 import { ServerStyleSheet } from 'styled-components'
-import { AppleTouchIcon, Icon, TileImage } from '../components/Icons'
 
 export default class MyDocument extends Document {
   static async getInitialProps(...args) {
@@ -24,23 +23,7 @@ export default class MyDocument extends Document {
   }
 
   get helmetJsx() {
-    return (
-      <Helmet htmlAttributes={{ lang: 'en' }}>
-        <AppleTouchIcon size="114" />
-        <AppleTouchIcon size="120" />
-        <AppleTouchIcon size="144" />
-        <AppleTouchIcon size="152" />
-        <AppleTouchIcon size="180" />
-        <AppleTouchIcon size="57" />
-        <AppleTouchIcon size="76" />
-        <AppleTouchIcon size="80" />
-        <Icon size="16" />
-        <Icon size="192" />
-        <Icon size="32" />
-        <Icon size="96" />
-        <TileImage size="144" />
-      </Helmet>
-    )
+    return <Helmet htmlAttributes={{ lang: 'en' }} />
   }
 
   render() {
