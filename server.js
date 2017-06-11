@@ -5,8 +5,6 @@ const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
-console.log('env', process.env.NODE_ENV)
-
 app
   .prepare()
   .then(() => {
@@ -19,13 +17,14 @@ app
     })
 
     server.get('*', (req, res) => {
-      console.log('env', process.env.NODE_ENV)
       return handle(req, res)
     })
 
     server.listen(3000, err => {
       if (err) throw err
-      console.log('> Ready on http://localhost:3000')
+      if (!process.env.NOW) {
+        console.log('> Ready on http://localhost:3000')
+      }
     })
   })
   .catch(ex => {
