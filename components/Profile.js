@@ -1,11 +1,5 @@
 import styled from 'styled-components'
-import dynamic from 'next/dynamic'
-import { StyledImg } from './Avatar'
-
-const Avatar = dynamic(import('./Avatar'), {
-  loading: StyledImg.withComponent('span'),
-  ssr: false,
-})
+import Avatar from './Avatar'
 
 const Wrapper = styled.section`
 padding: 100px 40px 0;
