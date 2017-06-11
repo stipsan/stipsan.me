@@ -5,7 +5,7 @@ import getGravatarUrl from '../utils/gravatar'
 
 const ratio = getDevicePixelRatio()
 
-const size = 80
+const size = 140
 const StyledImg = styled.img`
   border-radius: 50%;
   height: ${size}px;
@@ -21,6 +21,9 @@ const Wrapper = styled.span`
   overflow: hidden;
   margin-bottom: 20px;
   position: relative;
+  background-color: rgba(100, 145, 255, .1);
+  /* 3d transform ensures safari clips the picture properly */
+  transform: translate3d(0,0,0);
 
   & img {
     display: block;

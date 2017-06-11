@@ -13,7 +13,6 @@ injectGlobal`
 const Wrapper = styled.section`
   margin: 20px;
   padding: 20px;
-  border: 1px solid #DDD;
 `
 
 export default class Layout extends React.Component {

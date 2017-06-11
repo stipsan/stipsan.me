@@ -14,7 +14,7 @@ const Header = () =>
   <div>
     <Profile />
     <div id="top" />
-    <nav id="nav">
+    <nav>
       <Link href="/#top">
         <a><StyledNav>Home</StyledNav></a>
       </Link>
