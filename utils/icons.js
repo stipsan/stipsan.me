@@ -1,17 +1,21 @@
+import gravatarUrl from 'gravatar-url'
+
+const getGravatarUrl = size => gravatarUrl('stipsan@gmail.com', { size })
+
 export const AppleTouchIcon = size => ({
   rel: 'apple-touch-icon',
   sizes: `${size}x${size}`,
-  href: 'http://mysite.com/img/apple-touch-icon-57x57.png',
+  href: getGravatarUrl(size),
 })
 
 export const Icon = size => ({
   rel: 'icon',
-  type: 'image/png',
+  type: 'image/jpeg',
   sizes: `${size}x${size}`,
-  href: 'http://mysite.com/img/apple-touch-icon-57x57.png',
+  href: getGravatarUrl(size),
 })
 
 export const TileImage = size => ({
   name: 'msapplication-TileImage',
-  content: '/favicons/mstile-144x144.png',
+  content: getGravatarUrl(size),
 })
