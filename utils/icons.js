@@ -1,6 +1,4 @@
-import gravatarUrl from './gravatar'
-
-const getGravatarUrl = size => gravatarUrl('stipsan@gmail.com', { size })
+import getGravatarUrl from './gravatar'
 
 export const AppleTouchIcon = size => ({
   rel: 'apple-touch-icon',
