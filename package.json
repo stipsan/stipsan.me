@@ -6,7 +6,7 @@
   "scripts": {
     "build": "next build",
     "dev": "node server.js",
-    "now": "now && now alias && now-purge",
+    "now": "now && now alias && now-purge && now scale stipsan.me 1",
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
