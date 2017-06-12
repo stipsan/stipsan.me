@@ -16,7 +16,7 @@ const Link = styled.a`
 
 export default class MenuLink extends Component {
   static defaultProps = {
-    suffix: '#content',
+    suffix: '#',
   }
 
   handleClick = e =>

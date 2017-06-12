@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import Link from 'next/link'
 import MenuLink from './MenuLink'
+import Layer from './Layer'
 
 const StyledLink = styled.span`
   margin-right: 15px;
@@ -18,24 +19,22 @@ const OtherLink = StyledLink.extend`
 
 const Nav = styled.nav`
   text-align: center;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0px;
   width: 100%;
   padding: 20px 0;
-  background-color: hsla(0, 0%, 100%, .75);
   box-shadow: hsla(0, 0%, 0%, .05) 0 1px 0 0;
-  backdrop-filter: blur(20px);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
 `
 
 const links = [
-  ['/writings', 'Writings'],
+  ['/', 'Writings'],
   ['/projects', 'Projects'],
   ['/about', 'About'],
 ]
 export default ({ url }) =>
   <Nav>
-    <MenuLink key="/" href="/" suffix="#top" url={url}>Hello</MenuLink>
     {links.map(([href, title]) =>
       <MenuLink key={href} href={href} url={url}>{title}</MenuLink>
     )}

@@ -2,7 +2,6 @@ import styled, { injectGlobal } from 'styled-components'
 import systemFontStack from 'system-font-stack'
 import Header from './Header'
 import Meta from './Meta'
-import Menu from './Menu'
 import { initGA, logPageView } from '../utils/analytics'
 
 injectGlobal`
@@ -45,9 +44,8 @@ export default class Layout extends React.Component {
       <Wrapper>
         <div id="top" />
         <Meta />
-        <Header />
+        <Header url={this.props.url} />
         <div id="content" />
-        <Menu url={this.props.url} />
         {this.props.children}
       </Wrapper>
     )
