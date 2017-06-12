@@ -1,27 +1,26 @@
+import { Component } from 'react'
 import Layout from '../components/Layout'
 import Mock from '../components/Mock'
+import Footer from '../components/Footer'
+import Page from '../components/Page'
+import 'isomorphic-fetch'
 
-export default props =>
-  <Layout url={props.url}>
-    <h1>{props.url.query.title}</h1>
-    <div className="markdown">
-      <Mock />
-    </div>
-    <style jsx global>{`
-      .markdown {
-        font-family: 'Arial';
-      }
-      .markdown a {
-        text-decoration: none;
-        color: blue;
-      }
-      .markdown a:hover {
-        opacity: 0.6;
-      }
-      .markdown h3 {
-        margin: 0;
-        padding: 0;
-        text-transform: uppercase;
-      }
-    `}</style>
-  </Layout>
+export default class Writings extends Component {
+  static async getInitialProps() {
+    // eslint-disable-next-line no-undef
+    const res = await fetch('https://api.github.com/repos/developit/preact')
+    const json = await res.json()
+    return { stars: json.stargazers_count }
+  }
+
+  render() {
+    return (
+      <Layout url={this.props.url}>
+        <Page>
+          <p>Preact has {this.props.stars} ⭐️</p>
+          <Footer />
+        </Page>
+      </Layout>
+    )
+  }
+}

@@ -1,12 +1,21 @@
 import Helmet from 'react-helmet'
+import Markdown from 'react-markdown'
+
 import Layout from '../components/Layout'
 import Mock from '../components/Mock'
-
-import faker from 'faker'
+import Footer from '../components/Footer'
+import Page from '../components/Page'
 
 export default ({ url }) =>
   <Layout url={url}>
-    <Helmet title="About" />
-    <Mock />
-    <p>This is the about page</p>
+    <Page>
+      <Helmet title="About" />
+      <Markdown
+        source={`
+# Test
+Is this shit working?
+      `}
+      />
+      <Footer />
+    </Page>
   </Layout>

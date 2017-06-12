@@ -24,11 +24,6 @@ const Wrapper = styled.section`
   background: white;
 `
 
-const PageWrapper = styled.section`
-  background: #f7f7f7;
-  padding: 20px 0;
-`
-
 export default class Layout extends React.Component {
   static defaultProps = {
     isIndex: false,
@@ -53,9 +48,7 @@ export default class Layout extends React.Component {
         <Header />
         <div id="content" />
         <Menu url={this.props.url} />
-        <PageWrapper>
-          {this.props.children}
-        </PageWrapper>
+        {this.props.children}
       </Wrapper>
     )
   }

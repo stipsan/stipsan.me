@@ -1,12 +1,15 @@
 import Helmet from 'react-helmet'
 import Layout from '../components/Layout'
 import Mock from '../components/Mock'
-
-import faker from 'faker'
+import Footer from '../components/Footer'
+import Page from '../components/Page'
 
 export default ({ url }) =>
   <Layout url={url}>
-    <Helmet title="Projects" />
-    <Mock />
-    <p>Projects I'm involved in</p>
+    <Page>
+      <Helmet title="Projects" />
+      <Mock />
+      <p>Projects I'm involved in</p>
+      <Footer />
+    </Page>
   </Layout>
