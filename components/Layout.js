@@ -3,6 +3,7 @@ import systemFontStack from 'system-font-stack'
 import Helmet from 'react-helmet'
 import NoSSR from 'react-no-ssr'
 
+import StickyHeader from './StickyHeader'
 import Menu from './Menu'
 import Meta from './Meta'
 import Header from './Header'
@@ -14,7 +15,7 @@ import TrianglifyCanvas from './TrianglifyCanvas'
 import { initGA, logPageView } from '../utils/analytics'
 import { minAvatarSize } from './dimensions'
 
-const debug = false
+const debug = true
 
 injectGlobal`
 
@@ -36,50 +37,16 @@ injectGlobal`
   }
 `
 
-const Ruler = styled.div`
-position: absolute;
-width: 100%;
-background: blue;
-height: 1px;
-z-index: 10000;
-pointer-events: none;
-`
-const AvatarRuler = Ruler.extend`
-  top: 9.375vh;
-`
-const HeaderRuler = Ruler.extend`
-  top: 23.144vh;
-`
-const SubHeaderRuler = Ruler.extend`
-  top: 30.859vh;
-`
-const HrRuler = Ruler.extend`
-  top: 38.671vh;
-`
-
-const Red = styled.div`
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100vh;
-  background-color: red;
-  position: absolute;
-`
-const Blue = styled.div`
-  top: 100vh;
-  left: 0;
-  right: 0;
-  height: 100vh;
-  background-color: blue;
-  position: absolute;
-`
-
 const Wrapper = styled.section`
   height: 500px;
   height: 100vh;
   overflow: auto;
-  perspective: 100vh;
-  perspective-origin: 50% 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+  backface-visibility: hidden;
+  transform: translate3d(0,0,0);
 `
 
 export default class Layout extends React.Component {
@@ -109,18 +76,8 @@ export default class Layout extends React.Component {
               content="width=device-width, initial-scale=1"
             />
           </Helmet>
-          <Avatar />
-          <Header />
-          <SubHeader />
-          <Hr />
-          {debug && <AvatarRuler />}
-          {debug && <HeaderRuler />}
-          {debug && <SubHeaderRuler />}
-          {debug && <HrRuler />}
-          {debug && <Red />}
-          {debug && <Blue />}
+          <StickyHeader url={this.props.url} />
           <Meta />
-          <Menu url={this.props.url} />
           {this.props.children}
         </Wrapper>
       </div>

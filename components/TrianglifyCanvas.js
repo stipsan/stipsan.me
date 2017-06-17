@@ -3,25 +3,22 @@ import deepAssign from 'deep-assign'
 import styled from 'styled-components'
 import trianglify from 'trianglify'
 
-const CanvasContainer = styled.div`
-  position: fixed;
+const Canvas = styled.canvas`
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 0;
-`
-const CanvasContext = styled.canvas`
-position: absolute;
-  width: 100%;
   height: 100%;
-  left: 0px;
-  top: 0px;
-  z-index: 1;
+  width: 100%;
+  overflow: hidden;
+  z-index: -1;
 `
 
 export default class TrianglifyCanvas extends PureComponent {
-  static defaultProps = deepAssign({}, trianglify.defaults)
+  static defaultProps = deepAssign({}, trianglify.defaults, {
+    seed: Math.random(),
+  })
 
   state = {
     height: window.innerHeight,
@@ -30,7 +27,23 @@ export default class TrianglifyCanvas extends PureComponent {
 
   setCanvas = canvas => {
     this.canvas = canvas
-    console.log(canvas)
+  }
+
+  debounceResize = () => {
+    clearTimeout(this.resizeTimeout)
+    this.resizeTimeout = setTimeout(this.handleResize, 100)
+  }
+
+  handleResize = () => {
+    this.setState({
+      height: window.innerHeight,
+      width: window.innerWidth,
+    })
+  }
+
+  debounceRender = () => {
+    clearTimeout(this.renderTimeout)
+    this.renderTimeout = setTimeout(this.renderCanvas, 300)
   }
 
   renderCanvas = () => {
@@ -38,14 +51,20 @@ export default class TrianglifyCanvas extends PureComponent {
   }
 
   componentDidMount() {
+    window.addEventListener('resize', this.debounceResize)
+
     this.renderCanvas()
   }
 
+  componentDidUpdate() {
+    this.debounceRender()
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.debounceResize)
+  }
+
   render() {
-    return (
-      <CanvasContainer>
-        <CanvasContext innerRef={this.setCanvas} />
-      </CanvasContainer>
-    )
+    return <Canvas innerRef={this.setCanvas} />
   }
 }

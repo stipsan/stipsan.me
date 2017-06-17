@@ -19,8 +19,11 @@ export default class MenuLink extends Component {
     suffix: '#',
   }
 
-  handleClick = e =>
-    e.preventDefault() || Router.push(`${this.props.href}${this.props.suffix}`)
+  handleClick = e => {
+    e.preventDefault()
+    const href = `${this.props.href}${this.props.suffix}`
+    Router.push(href, href, { shallow: true })
+  }
 
   render() {
     const { href, suffix } = this.props

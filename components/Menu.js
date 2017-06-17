@@ -1,34 +1,12 @@
 import styled from 'styled-components'
 import Link from 'next/link'
 import MenuLink from './MenuLink'
-import Layer from './Layer'
 import { headerHeight, navbarHeight } from './dimensions'
-
-const Wrapper = styled.div`
-  width: 100%;
-  text-align: center;
-  height: ${headerHeight};
-  top: calc(-${headerHeight} + ${navbarHeight});
-  position: -webkit-sticky;
-  position: sticky;
-  z-index: 1;
-  -webkit-backdrop-filter: blur(17px);
-  backdrop-filter: blur(17px);
-  background: linear-gradient(to top, rgba(255, 255, 255, 0.9) 66px, rgba(255, 255, 255, 0.5));
-`
 
 const StyledLink = styled.span`
   margin-right: 15px;
   transition-duration: 1500ms;
   transition-timing-function:  ease-out;
-`
-const HomeLink = StyledLink.extend`
-  transition-property: opacity;
-  cursor: ${props => (props.isHidden ? 'default' : 'pointer')};
-  pointer-events: ${props => (props.isHidden ? 'hidden' : 'auto')};
-`
-const OtherLink = StyledLink.extend`
-  transition-property: opacity, background-color, color;
 `
 
 const Nav = styled.nav`
@@ -48,10 +26,8 @@ const links = [
   ['/about', 'About'],
 ]
 export default ({ url }) =>
-  <Wrapper>
-    <Nav>
-      {links.map(([href, title]) =>
-        <MenuLink key={href} href={href} url={url}>{title}</MenuLink>
-      )}
-    </Nav>
-  </Wrapper>
+  <Nav>
+    {links.map(([href, title]) =>
+      <MenuLink key={href} href={href} url={url}>{title}</MenuLink>
+    )}
+  </Nav>

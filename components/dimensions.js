@@ -1,3 +1,4 @@
+export const maxWidth = '634px'
 export const navbarHeight = '66px'
 export const headerHeight = '62vh'
 export const avatarSize = '7vh'

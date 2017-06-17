@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import getDevicePixelRatio from '../utils/device-pixel-ratio'
 import getGravatarUrl from '../utils/gravatar'
 import { avatarSize, minAvatarSize } from './dimensions'
-import Layer from './Layer'
 
 const StyledImg = styled.img`
   border-radius: 50%;
@@ -28,13 +27,10 @@ const Wrapper = styled.span`
   overflow: hidden;
   position: relative;
   background-color: rgba(100, 145, 255, .1);
-  /* 3d transform ensures safari clips the picture properly */
-  transform: translate3d(0,0,0);
 
-  /* Parallax positioning */
   position: absolute;
   left: 50%;
-  top: 16.2vh;
+  top: 9.375vh;
   transform: translate(-50%, -50%);
 
   & img {
@@ -85,12 +81,10 @@ export default class Avatar extends Component {
 
   render() {
     return (
-      <Layer>
-        <Wrapper imageDidLoad={imageDidLoad}>
-          <img src={getGravatarUrl(8)} />
-          <img src={imageDidLoad ? src : undefined} />
-        </Wrapper>
-      </Layer>
+      <Wrapper imageDidLoad={imageDidLoad}>
+        <img src={getGravatarUrl(8)} />
+        <img src={imageDidLoad ? src : undefined} />
+      </Wrapper>
     )
   }
 }
