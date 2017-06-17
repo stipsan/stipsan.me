@@ -1,2 +1,5 @@
 export const navbarHeight = '66px'
-export const headerHeight = '75vh'
+export const headerHeight = '62vh'
+export const avatarSize = '7vh'
+//export const minAvatarSize = '128px'
+export const minAvatarSize = '13.671vh'

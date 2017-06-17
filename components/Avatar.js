@@ -2,28 +2,40 @@ import { Component } from 'react'
 import styled from 'styled-components'
 import getDevicePixelRatio from '../utils/device-pixel-ratio'
 import getGravatarUrl from '../utils/gravatar'
+import { avatarSize, minAvatarSize } from './dimensions'
+import Layer from './Layer'
 
-const ratio = getDevicePixelRatio()
-
-const size = 140
 const StyledImg = styled.img`
   border-radius: 50%;
-  height: ${size}px;
-  width: ${size}px;
+  min-height: ${minAvatarSize};
+  min-width: ${minAvatarSize};
+  min-height: var(--avatar-size);
+  min-width: var(--avatar-size);
+  height: ${avatarSize};
+  width: ${avatarSize};
   margin-bottom: 20px;
 `
 
 const Wrapper = styled.span`
   display: inline-block;
   border-radius: 50%;
-  height: ${size}px;
-  width: ${size}px;
+  min-height: ${minAvatarSize};
+  min-width: ${minAvatarSize};
+  min-height: var(--avatar-size);
+  min-width: var(--avatar-size);
+  height: ${avatarSize};
+  width: ${avatarSize};
   overflow: hidden;
-  margin-bottom: 20px;
   position: relative;
   background-color: rgba(100, 145, 255, .1);
   /* 3d transform ensures safari clips the picture properly */
   transform: translate3d(0,0,0);
+
+  /* Parallax positioning */
+  position: absolute;
+  left: 50%;
+  top: 16.2vh;
+  transform: translate(-50%, -50%);
 
   & img {
     display: block;
@@ -33,8 +45,12 @@ const Wrapper = styled.span`
     left: 0;
     border-radius: 50%;
     position: absolute;
-    height: ${size}px;
-    width: ${size}px;
+    min-height: ${minAvatarSize};
+    min-width: ${minAvatarSize};
+    min-height: var(--avatar-size);
+    min-width: var(--avatar-size);
+    height: ${avatarSize};
+    width: ${avatarSize};
     transition: all 200ms ease-out;
     filter: blur(${props => (props.imageDidLoad ? 0 : 8)}px);
     will-change: opacity, filter;
@@ -48,6 +64,10 @@ const Wrapper = styled.span`
     opacity: ${props => (props.imageDidLoad ? 1 : 0)};
   }
 `
+
+const ratio = getDevicePixelRatio()
+// @TODO calculate this dynamically from 7vh
+const size = 140
 
 let imageDidLoad = false
 const src = getGravatarUrl(size * ratio)
@@ -65,10 +85,12 @@ export default class Avatar extends Component {
 
   render() {
     return (
-      <Wrapper imageDidLoad={imageDidLoad}>
-        <img src={getGravatarUrl(8)} />
-        <img src={imageDidLoad ? src : undefined} />
-      </Wrapper>
+      <Layer>
+        <Wrapper imageDidLoad={imageDidLoad}>
+          <img src={getGravatarUrl(8)} />
+          <img src={imageDidLoad ? src : undefined} />
+        </Wrapper>
+      </Layer>
     )
   }
 }

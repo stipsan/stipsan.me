@@ -2,6 +2,22 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import MenuLink from './MenuLink'
 import Layer from './Layer'
+import { headerHeight, navbarHeight } from './dimensions'
+
+const Wrapper = styled.div`
+  width: 100%;
+  text-align: center;
+  height: ${headerHeight};
+  background-color: hsla(0, 0%, 100%, .75);
+  background-color: white;
+  top: calc(-${headerHeight} + ${navbarHeight});
+  position: -webkit-sticky;
+  position: sticky;
+  transform-style: preserve-3d;
+  z-index: 1;
+  background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/concrete-texture.png");
+  background-attachment: fixed;
+`
 
 const StyledLink = styled.span`
   margin-right: 15px;
@@ -34,8 +50,10 @@ const links = [
   ['/about', 'About'],
 ]
 export default ({ url }) =>
+<Wrapper>
   <Nav>
     {links.map(([href, title]) =>
       <MenuLink key={href} href={href} url={url}>{title}</MenuLink>
     )}
   </Nav>
+</Wrapper>

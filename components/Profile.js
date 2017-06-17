@@ -1,43 +1,20 @@
 import styled from 'styled-components'
 import Avatar from './Avatar'
 import Logo from '../svgs/logo.svg'
+import { headerHeight, navbarHeight } from './dimensions'
 
 const Wrapper = styled.section`
-padding: 80px 40px 0;
+  height: calc(${headerHeight} - ${navbarHeight});
+  transform-style: preserve-3d;
 `
 
-const Header = styled.h1`
-  font-weight: 600;
-  letter-spacing: -2px;
-  font-size: 3em;
-  color: #222;
-  margin-top: 0;
-  margin-bottom: 0;
-`
-const Subheader = styled.h2`
-  font-size: 20px;
-  font-weight: 300;
-  color: #aaa;
-  margin-top: 40px;
-  position: relative;
-
-  & span:first-child,
-  & span:last-child {
-    position: absolute;
-  }
-
-  & span:first-child {
-    right: 50%;
-    margin-right: 40px;
-    text-align: right;
-    letter-spacing: 1px;
-  }
-
-  & span:last-child {
-    left: 50%;
-    margin-left: 40px;
-    text-align: left;
-  }
+const Hr = styled.hr`
+  display: block;
+  margin: 60px 100px 80px;
+  border-color: whitesmoke;
+  border-style: solid;
+  border-width: 4px;
+  opacity: 0.75;
 `
 
 const size = 64
@@ -72,13 +49,11 @@ const LogoLink = styled.a.attrs({
 
 export default () =>
   <Wrapper>
-    <Avatar />
-    <Header>Stian Didriksen</Header>
-    <Subheader>
-      <span>Frontend Engineer at</span>
-      <LogoLink>
-        <Logo />
-      </LogoLink>
-      <span>the Future of Commerce</span>
-    </Subheader>
+
+    <Layer>
+      <Subheader>
+        I'm a Frontend engineer & open-sourcerer
+      </Subheader>
+    </Layer>
+    <Layer><Hr /></Layer>
   </Wrapper>
