@@ -8,15 +8,13 @@ const Wrapper = styled.div`
   width: 100%;
   text-align: center;
   height: ${headerHeight};
-  background-color: hsla(0, 0%, 100%, .75);
-  background-color: white;
   top: calc(-${headerHeight} + ${navbarHeight});
   position: -webkit-sticky;
   position: sticky;
-  transform-style: preserve-3d;
   z-index: 1;
-  background-image: url("https://www.toptal.com/designers/subtlepatterns/patterns/concrete-texture.png");
-  background-attachment: fixed;
+  -webkit-backdrop-filter: blur(17px);
+  backdrop-filter: blur(17px);
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.9) 66px, rgba(255, 255, 255, 0.5));
 `
 
 const StyledLink = styled.span`
@@ -50,10 +48,10 @@ const links = [
   ['/about', 'About'],
 ]
 export default ({ url }) =>
-<Wrapper>
-  <Nav>
-    {links.map(([href, title]) =>
-      <MenuLink key={href} href={href} url={url}>{title}</MenuLink>
-    )}
-  </Nav>
-</Wrapper>
+  <Wrapper>
+    <Nav>
+      {links.map(([href, title]) =>
+        <MenuLink key={href} href={href} url={url}>{title}</MenuLink>
+      )}
+    </Nav>
+  </Wrapper>

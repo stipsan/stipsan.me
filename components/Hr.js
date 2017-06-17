@@ -20,6 +20,8 @@ const Hr = styled.div`
   transform: translate(-50%, -50%);
 `
 
-export default () => <HrLayer>
-  <Hr />
-</HrLayer>
+// @TODO find out why this component causes an ssr error
+export default () =>
+  <HrLayer>
+    <Hr />
+  </HrLayer>
