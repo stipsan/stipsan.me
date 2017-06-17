@@ -5,6 +5,7 @@ const Header = styled.h1`
   font-size: 3em;
   font-size: 4.687vh;
   color: #222;
+  color: rgba(0,0,0,.6);
   margin: 0 auto;
   text-align: center;
   position: absolute;

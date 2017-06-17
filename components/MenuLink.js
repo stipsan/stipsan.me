@@ -22,7 +22,7 @@ export default class MenuLink extends Component {
   handleClick = e => {
     e.preventDefault()
     const href = `${this.props.href}${this.props.suffix}`
-    Router.push(href, href, { shallow: true })
+    Router.push(href)
   }
 
   render() {
