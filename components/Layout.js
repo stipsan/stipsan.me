@@ -1,4 +1,4 @@
-import styled, { injectGlobal } from 'styled-components'
+import styled, { injectGlobal, ThemeProvider } from 'styled-components'
 import systemFontStack from 'system-font-stack'
 import Helmet from 'react-helmet'
 import NoSSR from 'react-no-ssr'
@@ -51,8 +51,7 @@ const Wrapper = styled.section`
   overflow-y: auto;
   position: relative;
   -webkit-overflow-scrolling: touch;
-  backface-visibility: hidden;
-  transform: translate3d(0,0,0);
+  will-change: scroll-position;
 `
 
 export default class Layout extends React.Component {
@@ -73,20 +72,26 @@ export default class Layout extends React.Component {
   }
   render() {
     return (
-      <div>
-        <NoSSR><TrianglifyCanvas /></NoSSR>
-        <Wrapper>
-          <Helmet>
-            <meta
-              name="viewport"
-              content="width=device-width, initial-scale=1"
-            />
-          </Helmet>
-          <StickyHeader url={this.props.url} />
-          <Meta />
-          {this.props.children}
-        </Wrapper>
-      </div>
+      <ThemeProvider
+        theme={{
+          breakpoints: [24, 32],
+        }}
+      >
+        <div>
+          <NoSSR><TrianglifyCanvas /></NoSSR>
+          <Wrapper>
+            <Helmet>
+              <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1"
+              />
+            </Helmet>
+            <StickyHeader url={this.props.url} />
+            <Meta />
+            {this.props.children}
+          </Wrapper>
+        </div>
+      </ThemeProvider>
     )
   }
 }

@@ -15,6 +15,7 @@ const StickyHeader = styled.header`
   top: calc(-${headerHeight} + ${navbarHeight});
   z-index: 1;
   background: linear-gradient(to top, rgba(255, 255, 255, 0.9) 66px, rgba(255, 255, 255, 0.5));
+  will-change: transform;
 
   @supports (backdrop-filter: blur(17px)) or (-webkit-backdrop-filter: blur(17px)) {
     backdrop-filter: blur(17px);

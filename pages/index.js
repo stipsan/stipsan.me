@@ -39,9 +39,10 @@ export default class Writings extends Component {
             {this.props.posts.map(({ title, url, image }, i) =>
               <Box
                 p={1}
-                width={
-                  i % 4 === 1 || i % 4 === 2 ? 1 - goldenRatio : goldenRatio
-                }
+                width={[
+                  1,
+                  i % 4 === 1 || i % 4 === 2 ? 1 - goldenRatio : goldenRatio,
+                ]}
               >
                 <MediumPost title={title} url={url} image={image} />
               </Box>
