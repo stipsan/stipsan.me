@@ -27,7 +27,7 @@ export default class MenuLink extends Component {
   }
 
   dispatchPrefetch = () => {
-    Router.prefetch(this.props.prefetch)
+    Router.prefetch(this.props.href)
   }
 
   render() {

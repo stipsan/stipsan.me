@@ -5,4 +5,5 @@ const Footer = styled.footer`
   text-align: center;
 `
 
-export default () => <Footer>&copy; 2017 - Stian Didriksen</Footer>
+export default () =>
+  <Footer>&copy; 2017 - Stian Didriksen; Under construction</Footer>

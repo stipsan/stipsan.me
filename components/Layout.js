@@ -28,6 +28,12 @@ injectGlobal`
     padding: 0;
   }
 
+  html {
+    overflow: hidden;
+    height: 100vh;
+    height: 100%;
+  }
+
   body {
     font-family: ${systemFontStack};
   }
