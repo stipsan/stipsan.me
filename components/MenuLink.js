@@ -12,6 +12,7 @@ const Link = styled.a`
   text-transform: uppercase;
   border-radius: 4px;
   text-decoration: none;
+  touch-action: manipulation;
 `
 
 export default class MenuLink extends Component {
@@ -21,16 +22,22 @@ export default class MenuLink extends Component {
 
   handleClick = e => {
     e.preventDefault()
-    const href = `${this.props.href}${this.props.suffix}`
-    Router.push(href)
+    const href = `${this.props.href}`
+    Router.push(href, href, { scroll: false, shallow: true })
+  }
+
+  dispatchPrefetch = () => {
+    Router.prefetch(this.props.prefetch)
   }
 
   render() {
-    const { href, suffix } = this.props
+    const { href } = this.props
     return (
       <Link
-        href={`${href}${suffix}`}
+        href={`${href}`}
         isActive={href === this.props.url.pathname}
+        onTouchStart={this.dispatchPrefetch}
+        onMouseEnter={this.dispatchPrefetch}
         onClick={this.handleClick}
       >
         {this.props.children}

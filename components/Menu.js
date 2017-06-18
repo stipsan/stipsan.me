@@ -28,6 +28,8 @@ const links = [
 export default ({ url }) =>
   <Nav>
     {links.map(([href, title]) =>
-      <MenuLink key={href} href={href} url={url}>{title}</MenuLink>
+      <MenuLink key={href} href={href} url={url}>
+        {title}
+      </MenuLink>
     )}
   </Nav>
