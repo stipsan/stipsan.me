@@ -12,21 +12,15 @@ import 'isomorphic-fetch'
 
 export default class Writings extends Component {
   static async getInitialProps() {
-    const title = 'Testing with Jest: 15 Awesome Tips and Tricks'
-    const url =
-      'https://medium.com/@stipsan/testing-with-jest-15-awesome-tips-and-tricks-42150ec4c262'
-    const image =
-      'https://cdn-images-1.medium.com/max/2000/1*YwGUh_DRzHKRLEjHspRIcQ.jpeg'
     return {
       posts: [
-        { title, url, image },
-        { title, url, image },
-        { title, url, image },
-        { title, url, image },
-        { title, url, image },
-        { title, url, image },
-        { title, url, image },
-        { title, url, image },
+        {
+          title: 'Testing with Jest: 15 Awesome Tips and Tricks',
+          url:
+            'https://medium.com/@stipsan/testing-with-jest-15-awesome-tips-and-tricks-42150ec4c262',
+          image:
+            'https://cdn-images-1.medium.com/max/2000/1*YwGUh_DRzHKRLEjHspRIcQ.jpeg',
+        },
       ],
     }
   }
@@ -38,6 +32,7 @@ export default class Writings extends Component {
           <Flex wrap>
             {this.props.posts.map(({ title, url, image }, i) =>
               <Box
+                key={url}
                 p={1}
                 width={[
                   1,

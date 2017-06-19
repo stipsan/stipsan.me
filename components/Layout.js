@@ -78,16 +78,10 @@ export default class Layout extends React.Component {
         }}
       >
         <div>
+          <Meta />
           <NoSSR><TrianglifyCanvas /></NoSSR>
           <Wrapper>
-            <Helmet>
-              <meta
-                name="viewport"
-                content="width=device-width, initial-scale=1"
-              />
-            </Helmet>
             <StickyHeader url={this.props.url} />
-            <Meta />
             {this.props.children}
           </Wrapper>
         </div>

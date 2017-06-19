@@ -16,4 +16,5 @@ export default () =>
     <link {...AppleTouchIcon(152)} />
     <link {...AppleTouchIcon(180)} />
     <meta {...TileImage(144)} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
   </Helmet>
