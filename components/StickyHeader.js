@@ -8,26 +8,14 @@ import Hr from './Hr'
 
 import { headerHeight, navbarHeight } from './dimensions'
 
-const StickyHeader = styled.header`
-  position: -webkit-sticky;
-  position: sticky;
-  height: ${headerHeight};
-  top: calc(-${headerHeight} + ${navbarHeight});
-  z-index: 1;
-  background: linear-gradient(to top, rgba(255, 255, 255, 0.9) 66px, rgba(255, 255, 255, 0.5));
-  will-change: transform;
-
-  @supports (backdrop-filter: blur(17px)) or (-webkit-backdrop-filter: blur(17px)) {
-    backdrop-filter: blur(17px);
-    background-image: linear-gradient(to top, rgba(255, 255, 255, 0.4) 66px, rgba(255, 255, 255, 0.1));
-  }
+const Wrapper = styled.header`
+  background: white;
 `
 
 export default ({ url }) =>
-  <StickyHeader>
+  <Wrapper>
     <Avatar />
     <Header />
     <SubHeader />
     <Hr />
-    <Menu url={url} />
-  </StickyHeader>
+  </Wrapper>

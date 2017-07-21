@@ -14,10 +14,13 @@ const Nav = styled.nav`
   width: 100%;
   padding: 20px 0;
   box-shadow: hsla(0, 0%, 0%, .05) 0 1px 0 0;
-  position: absolute;
+  position: -webkit-sticky;
+  position: sticky;
+  top: -1px;
   right: 0;
-  bottom: 0;
   left: 0;
+  background-color: white;
+  z-index: 1;
 `
 
 const links = [

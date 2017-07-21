@@ -49,7 +49,6 @@ const LogoLink = styled.a.attrs({
 
 export default () =>
   <Wrapper>
-
     <Layer>
       <Subheader>
         I'm a Frontend engineer & open-sourcerer

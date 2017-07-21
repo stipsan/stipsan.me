@@ -8,10 +8,9 @@ const Hr = styled.div`
   margin-left: auto;
   margin-right: auto;
 
-  position: absolute;
-  left: 10px;
-  right: 10px;
-  top: 38.671vh;
+  display: block;
+  margin-top: 6.671vh;
+  margin-bottom: 6.671vh;
 `
 
 export default () => <Hr />

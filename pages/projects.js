@@ -20,7 +20,6 @@ export default class Projects extends Component {
         <Page>
           <Helmet title="Projects" />
           <p>ioredisMock has {this.props.stars} ⭐️</p>
-          <Footer />
         </Page>
       </Layout>
     )

@@ -7,11 +7,10 @@ const Subheader = styled.h2`
   color: hsla(0, 0%, 0%, .5);
   margin: 0 auto;
   text-align: center;
-  position: absolute;
-  left: 10px;
-  top: 30.859vh;
-  right: 10px;
-  transform: translateY(-50%);
+  display: block;
+  margin-left: 10px;
+  margin-top: 3.859vh;
+  margin-right: 10px;
 
   & span {
     font-weight: 600;
@@ -21,5 +20,5 @@ const Subheader = styled.h2`
 
 export default () =>
   <Subheader>
-    I'm a <span>Frontend engineer</span> & <span>open-sourcerer</span>
+    I'm a <span>frontend engineer</span> & <span>open-sourcerer</span>
   </Subheader>

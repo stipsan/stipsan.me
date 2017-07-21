@@ -1,8 +1,9 @@
 import { Component } from 'react'
 import styled from 'styled-components'
 import Router from 'next/router'
+import Link from 'next/link'
 
-const Link = styled.a`
+const StyledLink = styled.a`
   cursor: pointer;
   color: ${props => (props.isActive ? 'white' : '#0f0f0f')};
   background-color: ${props => (props.isActive ? '#0f0f0f' : 'transparent')};
@@ -15,33 +16,10 @@ const Link = styled.a`
   touch-action: manipulation;
 `
 
-export default class MenuLink extends Component {
-  static defaultProps = {
-    suffix: '#',
-  }
-
-  handleClick = e => {
-    e.preventDefault()
-    const href = `${this.props.href}`
-    Router.push(href, href, { scroll: false, shallow: true })
-  }
-
-  dispatchPrefetch = () => {
-    Router.prefetch(this.props.href)
-  }
-
-  render() {
-    const { href } = this.props
-    return (
-      <Link
-        href={`${href}`}
-        isActive={href === this.props.url.pathname}
-        onTouchStart={this.dispatchPrefetch}
-        onMouseEnter={this.dispatchPrefetch}
-        onClick={this.handleClick}
-      >
-        {this.props.children}
-      </Link>
-    )
-  }
-}
+export default ({url, href, children}) => <Link href={href}><StyledLink
+  href={`${href}`}
+  isActive={href === url.pathname}
+>
+  {children}
+</StyledLink>
+</Link>

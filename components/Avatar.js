@@ -16,7 +16,7 @@ const StyledImg = styled.img`
 `
 
 const Wrapper = styled.span`
-  display: inline-block;
+  display: block;
   border-radius: 50%;
   min-height: ${minAvatarSize};
   min-width: ${minAvatarSize};
@@ -28,10 +28,9 @@ const Wrapper = styled.span`
   position: relative;
   background-color: rgba(100, 145, 255, .1);
 
-  position: absolute;
-  left: 50%;
-  top: 9.375vh;
-  transform: translate(-50%, -50%);
+  margin-top: 9.375vh;
+  margin-left: auto;
+  margin-right: auto;
 
   & img {
     display: block;

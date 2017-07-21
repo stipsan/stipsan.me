@@ -3,6 +3,7 @@ import styled from 'styled-components'
 const Wrapper = styled.div`
   border-radius: 8px;
   box-shadow: rgba(0,0,0,0.4) 0 9px 20px;
+  background: white;
 `
 
 const Link = styled.a`

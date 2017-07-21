@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
 const Footer = styled.footer`
-  margin-top: 140px;
+  margin: 1rem 0;
   text-align: center;
 `
 
 export default () =>
-  <Footer>&copy; 2017 - Stian Didriksen; Under construction</Footer>
+  <Footer>&copy; 2017 &mdash; Stian Didriksen</Footer>

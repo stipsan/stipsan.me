@@ -43,7 +43,6 @@ export default class Writings extends Component {
               </Box>
             )}
           </Flex>
-          <Footer />
         </Page>
       </Layout>
     )
