@@ -6,4 +6,12 @@ jobs:
      steps:
        - checkout
        - run: node --version
-       - run: yarn --version
+       - run: git status
+       - run: yarn install
+       - run: git status
+       - deploy:
+          name: Maybe Deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              echo "deploy"
+            fi
