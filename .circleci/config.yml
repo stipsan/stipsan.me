@@ -9,13 +9,26 @@ jobs:
        - run: git status
        - run: yarn install --pure-lockfile
        - run: git status
-       - deploy:
-          name: Maybe Deploy
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              yarn global add now now-purge;
-              now-purge t $NOW_TOKEN;
-              now -t $NOW_TOKEN deploy;
-              now -t $NOW_TOKEN alias;
-              now -t $NOW_TOKEN scale 1;
-            fi
+
+  deploy:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run: npm i -g now now-purge
+      - run: now-purge t $NOW_TOKEN
+      - run: now -t $NOW_TOKEN deploy
+      - run: now -t $NOW_TOKEN alias
+      - run: now -t $NOW_TOKEN scale 1
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
+      - deploy:
+        requires:
+          - build
+        branches:
+          only:
+            - master
