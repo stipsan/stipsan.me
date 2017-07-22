@@ -7,13 +7,13 @@ jobs:
        - checkout
        - run: node --version
        - run: git status
-       - run: yarn install --frozen-lockfile
+       - run: yarn install --pure-lockfile
        - run: git status
        - deploy:
           name: Maybe Deploy
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              npm i -g now now-purge;
+              yarn global add now now-purge;
               now-purge t $NOW_TOKEN;
               now -t $NOW_TOKEN deploy;
               now -t $NOW_TOKEN alias;
