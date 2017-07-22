@@ -22,7 +22,6 @@
     "type": "git",
     "url": "git+https://github.com/stipsan/stipsan.me.git"
   },
-  "keywords": [],
   "author": "Stian Didriksen <stipsan@gmail.com> (https://stipsan.me)",
   "license": "MIT",
   "bugs": {
