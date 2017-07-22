@@ -8,6 +8,10 @@ cache: yarn
 jobs:
   include:
     - stage: deploy to production
-      before_script: npm install -g now
-      script: yarn now
-      on: master
+      script: skip
+      deploy:
+        provider: script
+        before_script: npm install -g now
+        script: yarn now
+        on:
+          branch: master
