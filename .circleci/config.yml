@@ -7,7 +7,7 @@ jobs:
        - checkout
        - run: node --version
        - run: git status
-       - run: yarn install --frozen-lockfile
+       - run: yarn install --pure-lockfile
        - run: git status
        - deploy:
           name: Maybe Deploy
