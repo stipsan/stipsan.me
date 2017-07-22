@@ -6,7 +6,6 @@
   "scripts": {
     "build": "next build",
     "dev": "node server.js",
-    "now": "now -t $NOW_TOKEN --forceSync deploy && now -t $NOW_TOKEN --forceSync alias && now-purge -t $NOW_TOKEN && now -t $NOW_TOKEN scale stipsan.me 1",
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

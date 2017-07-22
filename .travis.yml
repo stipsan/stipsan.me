@@ -8,10 +8,10 @@ cache: yarn
 jobs:
   include:
     - stage: deploy to production
-      install: npm install -g now
+      install: npm install -g now now-purge
       script: skip
       deploy:
         provider: script
-        script: yarn now
+        script: now-purge t $NOW_TOKEN && now -t $NOW_TOKEN --alias
         on:
           branch: master
