@@ -1,6 +1,6 @@
 version: 2
 jobs:
-   build:
+   test:
      docker:
        - image: circleci/node:latest
      steps:
@@ -27,8 +27,8 @@ workflows:
     jobs:
       - build
       - deploy:
-        requires:
-          - build
-        branches:
-          only:
-            - master
+          requires:
+            - build
+          branches:
+            only:
+              - master
