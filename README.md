@@ -1,3 +1,5 @@
+[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/stipsan/stipsan.me/tree/master)
+
 # stipsan.me
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/stipsan/stipsan.me.svg)](https://greenkeeper.io/)
