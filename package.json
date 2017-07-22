@@ -6,7 +6,6 @@
   "scripts": {
     "build": "next build",
     "dev": "node server.js",
-    "now": "now -t $NOW_TOKEN deploy && now -t $NOW_TOKEN alias && now-purge -t $NOW_TOKEN && now -t $NOW_TOKEN scale stipsan.me 1",
     "start": "node server.js",
     "e2e": "echo \"Error: end to end browser testing not setup\" && exit 1",
     "flow": "echo \"Error: static type checking not setup\" && exit 1",
