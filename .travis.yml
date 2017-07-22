@@ -1,0 +1,13 @@
+language: node_js
+
+node_js:
+  - "7"
+
+cache: yarn
+
+jobs:
+  include:
+    - stage: deploy to production
+      before_script: echo "before"
+      script: yarn now
+      on: master
