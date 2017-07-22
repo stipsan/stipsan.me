@@ -7,6 +7,10 @@
     "build": "next build",
     "dev": "node server.js",
     "start": "node server.js",
+    "e2e": "echo \"Error: end to end browser testing not setup\" && exit 1",
+    "flow": "echo \"Error: static type checking not setup\" && exit 1",
+    "lint": "echo \"Error: eslint not setup\" && exit 1",
+    "prettier": "echo \"Error: prettier not setup\" && exit 1",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "now": {

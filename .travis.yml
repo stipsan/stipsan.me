@@ -7,6 +7,11 @@ cache: yarn
 
 jobs:
   include:
+    - script: yarn e2e
+    - script: yarn flow
+    - script: yarn lint
+    - script: yarn prettier
+    - script: yarn test
     - stage: deploy to production
       install: npm install -g now now-purge
       script: skip
