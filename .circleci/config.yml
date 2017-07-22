@@ -13,5 +13,9 @@ jobs:
           name: Maybe Deploy
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              echo "deploy"
+              npm i -g now now-purge;
+              now-purge t $NOW_TOKEN;
+              now -t $NOW_TOKEN deploy;
+              now -t $NOW_TOKEN alias;
+              now -t $NOW_TOKEN scale 1;
             fi
