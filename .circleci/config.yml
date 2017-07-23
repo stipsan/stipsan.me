@@ -1,8 +1,10 @@
+default-docker: &docker
+  - image: circleci/node:latest
+
 version: 2
 jobs:
   checkout:
-    docker:
-      - image: circleci/node:latest
+    docker: *docker
     steps:
       - checkout
       - run:
@@ -14,8 +16,7 @@ jobs:
             - ~/project
 
   dependencies:
-    docker:
-      - image: circleci/node:latest
+    docker: *docker
     steps:
       - run:
           name: save SHA to a file
@@ -33,8 +34,7 @@ jobs:
             - ~/project/node_modules
 
   static-analysis:
-    docker:
-      - image: circleci/node:latest
+    docker: *docker
     steps:
       - run:
           name: save SHA to a file
@@ -50,8 +50,7 @@ jobs:
       - run: echo flow
 
   test:
-    docker:
-      - image: circleci/node:latest
+    docker: *docker
     steps:
       - run:
           name: save SHA to a file
@@ -82,8 +81,7 @@ jobs:
       - run: echo firefox
 
   deploy:
-    docker:
-      - image: circleci/node:latest
+    docker: *docker
     steps:
       - run:
           name: save SHA to a file
