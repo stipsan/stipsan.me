@@ -92,14 +92,10 @@ jobs:
           keys:
             - v1-repo-{{ checksum ".circle-sha" }}
       - run: sudo npm i -g --unsafe-perm now now-purge
-      - run: which now-purge
-      - run: which now
       - run: now-purge t $NOW_TOKEN
       - run: now -t $NOW_TOKEN deploy
       - run: now -t $NOW_TOKEN alias
-      - run: now -t $NOW_TOKEN scale 1
-      - run: now --debug --npm
-      - run: now --debug --npm --force
+      - run: now -t $NOW_TOKEN scale stipsan.me 1
 
 workflows:
   version: 2
