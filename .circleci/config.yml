@@ -45,12 +45,12 @@ jobs:
       - *RESTORE-REPO
       - *RESTORE-DEPS
       - run: |
-          mkdir -p /reports
+          mkdir -p ~/reports
           eslint . --format junit --output-file /reports/eslint.xml
       - store_test_results:
-          path: /reports
+          path: ~/reports
       - store_artifacts:
-          path: /reports
+          path: ~/reports
 
   static-analysis:
     docker: *DOCKER
