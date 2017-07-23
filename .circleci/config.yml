@@ -33,6 +33,11 @@ jobs:
       - *RESTORE-REPO
       - *RESTORE-DEPS
       - run: yarn install --pure-lockfile
+      - run: |
+            if [ "${CIRCLE_BRANCH}" == lock* ]; then
+              sudo npm i -g --unsafe-perm greenkeeper-lockfile@1
+              greenkeeper-lockfile-update
+            fi
       - save_cache:
           key: v1-deps-{{ checksum "yarn.lock" }}
           paths:
