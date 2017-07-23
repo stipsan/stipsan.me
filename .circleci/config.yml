@@ -13,15 +13,41 @@ jobs:
           paths:
             - ~/project
 
+  dependencies:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - run:
+          name: save SHA to a file
+          command: echo $CIRCLE_SHA1 > .circle-sha
+      - restore_cache:
+          keys:
+            - v1-repo-{{ checksum ".circle-sha" }}
+      - restore_cache:
+          keys:
+            - v1-deps-{{ checksum "yarn.lock" }}
+      - run: yarn install --pure-lockfile
+      - save_cache:
+          key: v1-deps-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/projects/node_modules
+
   test:
     docker:
       - image: circleci/node:latest
     steps:
-      - checkout
-      - run: node --version
-      - run: git status
-      - run: yarn install --pure-lockfile
-      - run: git status
+      - run:
+          name: save SHA to a file
+          command: echo $CIRCLE_SHA1 > .circle-sha
+      - restore_cache:
+          keys:
+            - v1-repo-{{ checksum ".circle-sha" }}
+      - restore_cache:
+          keys:
+            - v1-deps-{{ checksum "yarn.lock" }}
+      - run: ls node_modules
+      - run: yarn build
+
 
   deploy:
     docker:
@@ -46,9 +72,23 @@ workflows:
   version: 2
   build:
     jobs:
-      - test
+      # Heat up the cache, git checkout will only happen once
+      - checkout
+      # Installing dependencies will only happen once
+      - dependencies:
+          requires:
+            # Do not run 'dependencies' job before 'checkout' is done
+            - checkout
+      - test:
+          requires:
+            # Even though 'dependencies' already require 'checkout' it's
+            # good practice to be explicit about what is required
+            - checkout
+            - dependencies
       - deploy:
           requires:
+            - checkout
+            # 'dependencies' is not needed, 'now.sh' will install dependencies
             - test
           filters:
             branches:
