@@ -142,11 +142,7 @@ workflows:
             branches:
               only: /greenkeeper\/.*/
       - deploy:
-          requires:
-            - eslint
-            - static-analysis
-            - test
-            - e2e
+          <<: *AFTER-SUCCESS
           filters:
             branches:
               only: master
