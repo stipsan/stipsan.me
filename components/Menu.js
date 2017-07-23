@@ -6,7 +6,7 @@ import { headerHeight, navbarHeight } from './dimensions'
 const StyledLink = styled.span`
   margin-right: 15px;
   transition-duration: 1500ms;
-  transition-timing-function:  ease-out;
+  transition-timing-function: ease-out;
 `
 
 const Nav = styled.nav`
