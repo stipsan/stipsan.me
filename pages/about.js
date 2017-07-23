@@ -1,12 +1,10 @@
+import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import Markdown from 'react-markdown'
 
 import Layout from '../components/Layout'
-import Mock from '../components/Mock'
-import Footer from '../components/Footer'
 import Page from '../components/Page'
 
-export default ({ url }) => <Layout url={url}>
+const About = ({ url }) => <Layout url={url}>
     <Page>
       <Helmet title="About" />
       <article>
@@ -14,3 +12,9 @@ export default ({ url }) => <Layout url={url}>
       </article>
     </Page>
   </Layout>
+
+About.propTypes = {
+  url: PropTypes.object.isRequired
+}
+
+export default About

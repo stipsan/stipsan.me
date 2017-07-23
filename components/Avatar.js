@@ -4,17 +4,6 @@ import getDevicePixelRatio from '../utils/device-pixel-ratio'
 import getGravatarUrl from '../utils/gravatar'
 import { avatarSize, minAvatarSize } from './dimensions'
 
-const StyledImg = styled.img`
-  border-radius: 50%;
-  min-height: ${minAvatarSize};
-  min-width: ${minAvatarSize};
-  min-height: var(--avatar-size);
-  min-width: var(--avatar-size);
-  height: ${avatarSize};
-  width: ${avatarSize};
-  margin-bottom: 20px;
-`
-
 const Wrapper = styled.span`
   display: block;
   border-radius: 50%;

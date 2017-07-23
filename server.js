@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 const express = require('express')
 const next = require('next')
 const LRUCache = require('lru-cache')
@@ -8,7 +10,8 @@ const handle = app.getRequestHandler()
 
 const ssrCache = new LRUCache({
   max: 100,
-  maxAge: 1000 * 60 * 60, // 1hour
+  // 1 hour
+  maxAge: 1000 * 60 * 60,
 })
 
 app

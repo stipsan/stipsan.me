@@ -1,13 +1,6 @@
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import Link from 'next/link'
 import MenuLink from './MenuLink'
-import { headerHeight, navbarHeight } from './dimensions'
-
-const StyledLink = styled.span`
-  margin-right: 15px;
-  transition-duration: 1500ms;
-  transition-timing-function: ease-out;
-`
 
 const Nav = styled.nav`
   text-align: center;
@@ -28,7 +21,7 @@ const links = [
   ['/projects', 'Projects'],
   ['/about', 'About'],
 ]
-export default ({ url }) =>
+const Menu = ({ url }) =>
   <Nav>
     {links.map(([href, title]) =>
       <MenuLink key={href} href={href} url={url}>
@@ -36,3 +29,9 @@ export default ({ url }) =>
       </MenuLink>
     )}
   </Nav>
+
+Menu.propTypes = {
+  url: PropTypes.object.isRequired
+}
+
+export default Menu

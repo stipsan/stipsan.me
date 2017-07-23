@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -32,9 +33,17 @@ const Header = styled.h3`
   text-shadow: black 0 2px 4px;
 `
 
-export default ({ url, title, image }) =>
+const MediumPost = ({ url, title, image }) =>
   <Wrapper>
     <Link image={image} href={url} target="_blank">
       <Header>{title}</Header>
     </Link>
   </Wrapper>
+
+MediumPost.propTypes = {
+  url: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+}
+
+export default MediumPost

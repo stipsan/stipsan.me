@@ -20,5 +20,5 @@ const Subheader = styled.h2`
 
 export default () =>
   <Subheader>
-    I'm a <span>frontend engineer</span> & <span>open-sourcerer</span>
+    I&apos;m a <span>frontend engineer</span> &amp; <span>open-sourcerer</span>
   </Subheader>

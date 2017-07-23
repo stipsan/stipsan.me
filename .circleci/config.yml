@@ -1,96 +1,91 @@
+defaults:
+  docker: &DOCKER
+    - image: circleci/node:latest
+  save-sha: &SAVE-SHA
+    run:
+        name: save SHA to a file
+        command: echo $CIRCLE_SHA1 > .circle-sha
+  restore-repo: &RESTORE-REPO
+    restore_cache:
+        keys:
+          - v1-repo-{{ checksum ".circle-sha" }}
+  restore-deps: &RESTORE-DEPS
+    restore_cache:
+        keys:
+          - v1-deps-{{ checksum "yarn.lock" }}
+
 version: 2
 jobs:
   checkout:
-    docker:
-      - image: circleci/node:latest
+    docker: *DOCKER
     steps:
       - checkout
-      - run:
-          name: save SHA to a file
-          command: echo $CIRCLE_SHA1 > .circle-sha
+      - *SAVE-SHA
       - save_cache:
           key: v1-repo-{{ checksum ".circle-sha" }}
           paths:
             - ~/project
 
   dependencies:
-    docker:
-      - image: circleci/node:latest
+    docker: *DOCKER
     steps:
-      - run:
-          name: save SHA to a file
-          command: echo $CIRCLE_SHA1 > .circle-sha
-      - restore_cache:
-          keys:
-            - v1-repo-{{ checksum ".circle-sha" }}
-      - restore_cache:
-          keys:
-            - v1-deps-{{ checksum "yarn.lock" }}
+      - *SAVE-SHA
+      - *RESTORE-REPO
+      - *RESTORE-DEPS
       - run: yarn install --pure-lockfile
       - save_cache:
           key: v1-deps-{{ checksum "yarn.lock" }}
           paths:
             - ~/project/node_modules
 
-  static-analysis:
-    docker:
-      - image: circleci/node:latest
+  eslint:
+    docker: *DOCKER
     steps:
-      - run:
-          name: save SHA to a file
-          command: echo $CIRCLE_SHA1 > .circle-sha
-      - restore_cache:
-          keys:
-            - v1-repo-{{ checksum ".circle-sha" }}
-      - restore_cache:
-          keys:
-            - v1-deps-{{ checksum "yarn.lock" }}
+      - *SAVE-SHA
+      - *RESTORE-REPO
+      - *RESTORE-DEPS
+      - run: yarn eslint:workaround
+      # Change to yarn eslint:ci when circleci workflow supports junit
+      #- run: yarn eslint:ci
+      #- store_test_results:
+      #    path: ~/project/.reports
+      #- store_artifacts:
+      #    path: ~/project/.reports
+
+  static-analysis:
+    docker: *DOCKER
+    steps:
+      - *SAVE-SHA
+      - *RESTORE-REPO
+      - *RESTORE-DEPS
       - run: echo eslint
       - run: echo prettier
       - run: echo flow
 
   test:
-    docker:
-      - image: circleci/node:latest
+    docker: *DOCKER
     steps:
-      - run:
-          name: save SHA to a file
-          command: echo $CIRCLE_SHA1 > .circle-sha
-      - restore_cache:
-          keys:
-            - v1-repo-{{ checksum ".circle-sha" }}
-      - restore_cache:
-          keys:
-            - v1-deps-{{ checksum "yarn.lock" }}
+      - *SAVE-SHA
+      - *RESTORE-REPO
+      - *RESTORE-DEPS
       - run: yarn build
 
   e2e:
     docker:
       - image: circleci/node:latest-browsers
     steps:
-      - run:
-          name: save SHA to a file
-          command: echo $CIRCLE_SHA1 > .circle-sha
-      - restore_cache:
-          keys:
-            - v1-repo-{{ checksum ".circle-sha" }}
-      - restore_cache:
-          keys:
-            - v1-deps-{{ checksum "yarn.lock" }}
+      - *SAVE-SHA
+      - *RESTORE-REPO
+      - *RESTORE-DEPS
       - run: echo phantomjs
       - run: echo chrome
       - run: echo firefox
 
   deploy:
-    docker:
-      - image: circleci/node:latest
+    docker: *DOCKER
     steps:
-      - run:
-          name: save SHA to a file
-          command: echo $CIRCLE_SHA1 > .circle-sha
-      - restore_cache:
-          keys:
-            - v1-repo-{{ checksum ".circle-sha" }}
+      - *SAVE-SHA
+      - *RESTORE-REPO
       - run: sudo npm i -g --unsafe-perm now now-purge
       - run: now-purge t $NOW_TOKEN
       - run: now -t $NOW_TOKEN deploy
@@ -108,6 +103,10 @@ workflows:
           requires:
             # Do not run 'dependencies' job before 'checkout' is done
             - checkout
+      - eslint:
+          requires:
+            - checkout
+            - dependencies
       - static-analysis:
           requires:
             # Even though 'dependencies' already require 'checkout' it's
@@ -126,6 +125,7 @@ workflows:
           requires:
             - checkout
             # 'dependencies' is not needed, 'now.sh' will install dependencies
+            - eslint
             - static-analysis
             - test
             - e2e

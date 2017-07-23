@@ -1,12 +1,16 @@
 import { Component } from 'react'
+import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import Layout from '../components/Layout'
-import Mock from '../components/Mock'
-import Footer from '../components/Footer'
 import Page from '../components/Page'
 import 'isomorphic-fetch'
 
 export default class Projects extends Component {
+  static propTypes = {
+    url: PropTypes.object.isRequired,
+    stars: PropTypes.number.isRequired,
+  }
+
   static async getInitialProps() {
     // eslint-disable-next-line no-undef
     const res = await fetch('https://api.github.com/repos/stipsan/ioredis-mock')
