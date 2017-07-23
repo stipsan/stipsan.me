@@ -38,6 +38,20 @@ jobs:
           paths:
             - ~/project/node_modules
 
+  eslint:
+    docker: *DOCKER
+    steps:
+      - *SAVE-SHA
+      - *RESTORE-REPO
+      - *RESTORE-DEPS
+      - run: |
+          mkdir -p /reports
+          eslint . --format junit --output-file /reports/eslint.xml
+      - store_test_results:
+          path: /reports
+      - store_artifacts:
+          path: /reports
+
   static-analysis:
     docker: *DOCKER
     steps:
@@ -89,6 +103,9 @@ workflows:
           requires:
             # Do not run 'dependencies' job before 'checkout' is done
             - checkout
+      - eslint:
+          requires:
+            dependencies
       - static-analysis:
           requires:
             # Even though 'dependencies' already require 'checkout' it's
@@ -107,6 +124,7 @@ workflows:
           requires:
             - checkout
             # 'dependencies' is not needed, 'now.sh' will install dependencies
+            - eslint
             - static-analysis
             - test
             - e2e
