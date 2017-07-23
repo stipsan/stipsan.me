@@ -22,7 +22,7 @@ jobs:
       - run:
           name: Create new immutable now instance
           command: now -t $NOW_TOKEN deploy
-      - run: now -t $NOW_TOKEN alias
+      - run:
           name: Assign stipsan.me to the new now instance
           command: now -t $NOW_TOKEN alias
       - run:
