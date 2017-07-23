@@ -1,4 +1,10 @@
 defaults:
+  after-success: &AFTER-SUCCESS
+    requires:
+      - eslint
+      - static-analysis
+      - test
+      - e2e
   docker: &DOCKER
     - image: circleci/node:latest
   save-sha: &SAVE-SHA
@@ -120,35 +126,21 @@ workflows:
             - checkout
       - eslint:
           requires:
-            - checkout
             - dependencies
       - static-analysis:
           requires:
-            # Even though 'dependencies' already require 'checkout' it's
-            # good practice to be explicit about what is required
-            - checkout
             - dependencies
       - test:
-          requires:
-            - checkout
-            - dependencies
+          requires: dependencies
       - e2e:
-          requires:
-            - checkout
-            - dependencies
+          requires: dependencies
       - greenkeeper-lockfile-upload:
-          requires:
-            - eslint
-            - static-analysis
-            - test
-            - e2e
+          <<: $AFTER-SUCCESS
           filters:
             branches:
               only: /greenkeeper\/.*/
       - deploy:
           requires:
-            - checkout
-            # 'dependencies' is not needed, 'now.sh' will install dependencies
             - eslint
             - static-analysis
             - test
