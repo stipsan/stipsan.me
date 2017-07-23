@@ -105,7 +105,7 @@ workflows:
             - checkout
       - eslint:
           requires:
-            dependencies
+            - dependencies
       - static-analysis:
           requires:
             # Even though 'dependencies' already require 'checkout' it's
