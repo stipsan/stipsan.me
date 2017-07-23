@@ -1599,9 +1599,12 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-config-common-sense@0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/eslint-config-common-sense/-/eslint-config-common-sense-0.0.2.tgz#00e1c40addaac9e5ab3c6a93ac5c049f3fed426f"
+eslint-config-common-sense@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/eslint-config-common-sense/-/eslint-config-common-sense-0.0.3.tgz#42b34c0dee9861ad1d21f4ab2d8e65dded114cf5"
+  dependencies:
+    is-resolvable "1.0.0"
+    object-assign "4.1.1"
 
 eslint-plugin-react@7.1.0:
   version "7.1.0"
@@ -2403,7 +2406,7 @@ is-promise@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/is-promise/-/is-promise-2.1.0.tgz#79a2a9ece7f096e80f36d2b2f3bc16c1ff4bf3fa"
 
-is-resolvable@^1.0.0:
+is-resolvable@1.0.0, is-resolvable@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/is-resolvable/-/is-resolvable-1.0.0.tgz#8df57c61ea2e3c501408d100fb013cf8d6e0cc62"
   dependencies:
@@ -2950,7 +2953,7 @@ oauth-sign@~0.8.1:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/oauth-sign/-/oauth-sign-0.8.2.tgz#46a6ab7f0aead8deae9ec0565780b7d4efeb9d43"
 
-object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
+object-assign@4.1.1, object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
 
