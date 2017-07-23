@@ -15,7 +15,7 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
-      - run: npm i -g now now-purge
+      - run: npm i --no-save now now-purge
       - run: now-purge t $NOW_TOKEN
       - run: now -t $NOW_TOKEN deploy
       - run: now -t $NOW_TOKEN alias
@@ -23,7 +23,7 @@ jobs:
 
 workflows:
   version: 2
-  build-and-deploy:
+  build:
     jobs:
       - test
       - deploy:
