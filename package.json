@@ -51,6 +51,6 @@
   "devDependencies": {
     "babel-eslint": "7.2.3",
     "eslint": "4.3.0",
-    "eslint-config-common-sense": "0.0.2"
+    "eslint-config-common-sense": "0.0.3"
   }
 }
