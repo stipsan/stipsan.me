@@ -131,9 +131,11 @@ workflows:
           requires:
             - dependencies
       - test:
-          requires: dependencies
+          requires:
+            - dependencies
       - e2e:
-          requires: dependencies
+          requires:
+            - dependencies
       - greenkeeper-lockfile-upload:
           <<: *AFTER-SUCCESS
           filters:
