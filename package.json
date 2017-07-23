@@ -7,6 +7,7 @@
     "build": "next build",
     "dev": "node server.js",
     "start": "node server.js",
+    "eslint:ci": "eslint . --format junit --output-file .reports/eslint.xml",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "now": {

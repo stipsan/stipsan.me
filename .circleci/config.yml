@@ -44,13 +44,11 @@ jobs:
       - *SAVE-SHA
       - *RESTORE-REPO
       - *RESTORE-DEPS
-      - run: |
-          mkdir -p ~/reports
-          eslint . --format junit --output-file /reports/eslint.xml
+      - run: yarn eslint:ci
       - store_test_results:
-          path: ~/reports
+          path: ~/project/.reports
       - store_artifacts:
-          path: ~/reports
+          path: ~/project/.reports
 
   static-analysis:
     docker: *DOCKER
