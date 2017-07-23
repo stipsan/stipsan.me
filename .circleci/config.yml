@@ -105,6 +105,7 @@ workflows:
             - checkout
       - eslint:
           requires:
+            - checkout
             - dependencies
       - static-analysis:
           requires:
