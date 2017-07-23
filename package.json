@@ -49,6 +49,8 @@
     "system-font-stack": "1.0.2"
   },
   "devDependencies": {
-    "eslint": "4.3.0"
+    "babel-eslint": "7.2.3",
+    "eslint": "4.3.0",
+    "eslint-config-common-sense": "0.0.2"
   }
 }
