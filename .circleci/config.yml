@@ -32,6 +32,23 @@ jobs:
           paths:
             - ~/project/node_modules
 
+  static-analysis:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - run:
+          name: save SHA to a file
+          command: echo $CIRCLE_SHA1 > .circle-sha
+      - restore_cache:
+          keys:
+            - v1-repo-{{ checksum ".circle-sha" }}
+      - restore_cache:
+          keys:
+            - v1-deps-{{ checksum "yarn.lock" }}
+      - run: echo eslint
+      - run: echo prettier
+      - run: echo flow
+
   test:
     docker:
       - image: circleci/node:latest
@@ -45,10 +62,24 @@ jobs:
       - restore_cache:
           keys:
             - v1-deps-{{ checksum "yarn.lock" }}
-      - run: ls .
-      - run: ls ./node_modules
       - run: yarn build
 
+  e2e:
+    docker:
+      - image: circleci/node:latest-browsers
+    steps:
+      - run:
+          name: save SHA to a file
+          command: echo $CIRCLE_SHA1 > .circle-sha
+      - restore_cache:
+          keys:
+            - v1-repo-{{ checksum ".circle-sha" }}
+      - restore_cache:
+          keys:
+            - v1-deps-{{ checksum "yarn.lock" }}
+      - run: echo phantomjs
+      - run: echo chrome
+      - run: echo firefox
 
   deploy:
     docker:
@@ -81,17 +112,27 @@ workflows:
           requires:
             # Do not run 'dependencies' job before 'checkout' is done
             - checkout
-      - test:
+      - static-analysis:
           requires:
             # Even though 'dependencies' already require 'checkout' it's
             # good practice to be explicit about what is required
+            - checkout
+            - dependencies
+      - test:
+          requires:
+            - checkout
+            - dependencies
+      - e2e:
+          requires:
             - checkout
             - dependencies
       - deploy:
           requires:
             - checkout
             # 'dependencies' is not needed, 'now.sh' will install dependencies
+            - static-analysis
             - test
+            - e2e
           filters:
             branches:
               only: master
