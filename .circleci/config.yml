@@ -67,7 +67,8 @@ jobs:
       - run: now -t $NOW_TOKEN deploy
       - run: now -t $NOW_TOKEN alias
       - run: now -t $NOW_TOKEN scale 1
-      - run: now --debug
+      - run: now --debug --npm
+      - run: now --debug --npm --force
 
 workflows:
   version: 2
