@@ -11,7 +11,6 @@ import Header from './Header'
 import SubHeader from './SubHeader'
 import Hr from './Hr'
 import Avatar from './Avatar'
-import TrianglifyCanvas from './TrianglifyCanvas'
 import Footer from './Footer'
 
 import { initGA, logPageView } from '../utils/analytics'
