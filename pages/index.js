@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Flex, Box } from 'grid-styled'
 
 import Layout from '../components/Layout'
@@ -9,6 +10,17 @@ import { goldenRatio } from '../components/dimensions'
 import 'isomorphic-fetch'
 
 export default class Writings extends Component {
+  static propTypes = {
+    url: PropTypes.object.isRequired,
+    posts: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        url: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+      }).isRequired
+    ).isRequired
+  }
+
   static async getInitialProps() {
     return {
       posts: [
