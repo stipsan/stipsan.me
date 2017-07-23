@@ -10,7 +10,7 @@ export default ({ url }) => <Layout url={url}>
     <Page>
       <Helmet title="About" />
       <article>
-        <h1>This site is under construction...</h1>
+        <h2>This site is under construction...</h2>
       </article>
     </Page>
   </Layout>
