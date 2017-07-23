@@ -61,18 +61,10 @@ jobs:
           keys:
             - v1-repo-{{ checksum ".circle-sha" }}
       - run: sudo npm i -g now now-purge
-      - run:
-          name: Prevent breaching the max active instances on now
-          command: now-purge t $NOW_TOKEN
-      - run:
-          name: Create new immutable now instance
-          command: now -t $NOW_TOKEN deploy
-      - run:
-          name: Assign stipsan.me to the new now instance
-          command: now -t $NOW_TOKEN alias
-      - run:
-          name: New instance must have at least 1 active instance
-          command: now -t $NOW_TOKEN scale 1
+      - run: now-purge t $NOW_TOKEN
+      - run: now -t $NOW_TOKEN deploy
+      - run: now -t $NOW_TOKEN alias
+      - run: now -t $NOW_TOKEN scale 1
 
 workflows:
   version: 2
