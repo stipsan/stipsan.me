@@ -135,7 +135,7 @@ workflows:
       - e2e:
           requires: dependencies
       - greenkeeper-lockfile-upload:
-          <<: $AFTER-SUCCESS
+          <<: *AFTER-SUCCESS
           filters:
             branches:
               only: /greenkeeper\/.*/
