@@ -1,9 +1,34 @@
 version: 2
 jobs:
-   build:
-     docker:
-       - image: circleci/node:latest
-     steps:
-       - checkout
-       - run: node --version
-       - run: yarn --version
+  test:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run: node --version
+      - run: git status
+      - run: yarn install --pure-lockfile
+      - run: git status
+
+  deploy:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run: npm i -g now now-purge
+      - run: now-purge t $NOW_TOKEN
+      - run: now -t $NOW_TOKEN deploy
+      - run: now -t $NOW_TOKEN alias
+      - run: now -t $NOW_TOKEN scale 1
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - test
+      - deploy:
+          requires:
+            - test
+          branches:
+            only:
+              - master
