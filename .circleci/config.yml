@@ -1,32 +1,37 @@
-default-docker: &docker
-  - image: circleci/node:latest
+defaults:
+  docker: &DOCKER
+    - image: circleci/node:latest
+  save-sha: &SAVE-SHA
+    run:
+        name: save SHA to a file
+        command: echo $CIRCLE_SHA1 > .circle-sha
+  restore-repo: &RESTORE-REPO
+    restore_cache:
+        keys:
+          - v1-repo-{{ checksum ".circle-sha" }}
+  restore-deps: &RESTORE-DEPS
+    restore_cache:
+        keys:
+          - v1-deps-{{ checksum "yarn.lock" }}
 
 version: 2
 jobs:
   checkout:
-    docker: *docker
+    docker: *DOCKER
     steps:
       - checkout
-      - run:
-          name: save SHA to a file
-          command: echo $CIRCLE_SHA1 > .circle-sha
+      - *SAVE-SHA
       - save_cache:
           key: v1-repo-{{ checksum ".circle-sha" }}
           paths:
             - ~/project
 
   dependencies:
-    docker: *docker
+    docker: *DOCKER
     steps:
-      - run:
-          name: save SHA to a file
-          command: echo $CIRCLE_SHA1 > .circle-sha
-      - restore_cache:
-          keys:
-            - v1-repo-{{ checksum ".circle-sha" }}
-      - restore_cache:
-          keys:
-            - v1-deps-{{ checksum "yarn.lock" }}
+      - *SAVE-SHA
+      - *RESTORE-REPO
+      - *RESTORE-DEPS
       - run: yarn install --pure-lockfile
       - save_cache:
           key: v1-deps-{{ checksum "yarn.lock" }}
@@ -34,61 +39,39 @@ jobs:
             - ~/project/node_modules
 
   static-analysis:
-    docker: *docker
+    docker: *DOCKER
     steps:
-      - run:
-          name: save SHA to a file
-          command: echo $CIRCLE_SHA1 > .circle-sha
-      - restore_cache:
-          keys:
-            - v1-repo-{{ checksum ".circle-sha" }}
-      - restore_cache:
-          keys:
-            - v1-deps-{{ checksum "yarn.lock" }}
+      - *SAVE-SHA
+      - *RESTORE-REPO
+      - *RESTORE-DEPS
       - run: echo eslint
       - run: echo prettier
       - run: echo flow
 
   test:
-    docker: *docker
+    docker: *DOCKER
     steps:
-      - run:
-          name: save SHA to a file
-          command: echo $CIRCLE_SHA1 > .circle-sha
-      - restore_cache:
-          keys:
-            - v1-repo-{{ checksum ".circle-sha" }}
-      - restore_cache:
-          keys:
-            - v1-deps-{{ checksum "yarn.lock" }}
+      - *SAVE-SHA
+      - *RESTORE-REPO
+      - *RESTORE-DEPS
       - run: yarn build
 
   e2e:
     docker:
       - image: circleci/node:latest-browsers
     steps:
-      - run:
-          name: save SHA to a file
-          command: echo $CIRCLE_SHA1 > .circle-sha
-      - restore_cache:
-          keys:
-            - v1-repo-{{ checksum ".circle-sha" }}
-      - restore_cache:
-          keys:
-            - v1-deps-{{ checksum "yarn.lock" }}
+      - *SAVE-SHA
+      - *RESTORE-REPO
+      - *RESTORE-DEPS
       - run: echo phantomjs
       - run: echo chrome
       - run: echo firefox
 
   deploy:
-    docker: *docker
+    docker: *DOCKER
     steps:
-      - run:
-          name: save SHA to a file
-          command: echo $CIRCLE_SHA1 > .circle-sha
-      - restore_cache:
-          keys:
-            - v1-repo-{{ checksum ".circle-sha" }}
+      - *SAVE-SHA
+      - *RESTORE-REPO
       - run: sudo npm i -g --unsafe-perm now now-purge
       - run: now-purge t $NOW_TOKEN
       - run: now -t $NOW_TOKEN deploy
