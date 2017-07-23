@@ -10,7 +10,7 @@ export default ({ url }) => <Layout url={url}>
     <Page>
       <Helmet title="About" />
       <article>
-        @TODO
+        This site is under construction...
       </article>
     </Page>
   </Layout>
