@@ -15,11 +15,11 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
-      - run: npm i --no-save now now-purge
-      - run: ./node_modules/.bin/now-purge t $NOW_TOKEN
-      - run: ./node_modules/.bin/now -t $NOW_TOKEN deploy
-      - run: ./node_modules/.bin/now -t $NOW_TOKEN alias
-      - run: ./node_modules/.bin/now -t $NOW_TOKEN scale 1
+      - run: sudo npm i -g now now-purge
+      - run: now-purge t $NOW_TOKEN
+      - run: now -t $NOW_TOKEN deploy
+      - run: now -t $NOW_TOKEN alias
+      - run: now -t $NOW_TOKEN scale 1
 
 workflows:
   version: 2
