@@ -64,10 +64,10 @@ jobs:
       - run: which now-purge
       - run: which now
       - run: now-purge t $NOW_TOKEN
-      - run: now -t ${NOW_TOKEN} deploy
+      - run: now -t $NOW_TOKEN deploy
       - run: now -t $NOW_TOKEN alias
       - run: now -t $NOW_TOKEN scale 1
-      - run: now
+      - run: now --debug
 
 workflows:
   version: 2
