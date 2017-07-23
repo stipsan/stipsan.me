@@ -12,4 +12,8 @@ module.exports = {
       "plugin:react/recommended",
       "common-sense"
     ],
+    // remove this
+    rules: {
+      'react/display-name': 0
+    }
 };
