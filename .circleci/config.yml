@@ -30,7 +30,7 @@ jobs:
       - save_cache:
           key: v1-deps-{{ checksum "yarn.lock" }}
           paths:
-            - ~/projects/node_modules
+            - ~/project/node_modules
 
   test:
     docker:
