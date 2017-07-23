@@ -5,7 +5,6 @@ export default () => {
     return ratio
   }
 
-  let ratio = 1
   // To account for zoom, change to use deviceXDPI instead of systemXDPI
   if (
     global.screen &&

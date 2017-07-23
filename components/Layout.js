@@ -1,22 +1,16 @@
+import { Component } from 'react'
+import PropTypes from 'prop-types'
 import styled, { injectGlobal, ThemeProvider } from 'styled-components'
 import { normalize } from 'polished'
 import systemFontStack from 'system-font-stack'
-import Helmet from 'react-helmet'
-import NoSSR from 'react-no-ssr'
 
 import StickyHeader from './StickyHeader'
 import Menu from './Menu'
 import Meta from './Meta'
-import Header from './Header'
-import SubHeader from './SubHeader'
-import Hr from './Hr'
-import Avatar from './Avatar'
 import Footer from './Footer'
 
 import { initGA, logPageView } from '../utils/analytics'
 import { minAvatarSize } from './dimensions'
-
-const debug = true
 
 injectGlobal`
   ${normalize()}
@@ -39,7 +33,12 @@ const Wrapper = styled.section`
   background-position: center;
 `
 
-export default class Layout extends React.Component {
+export default class Layout extends Component {
+  static propTypes = {
+    url: PropTypes.object.isRequired,
+    children: PropTypes.node.isRequired,
+  }
+
   static defaultProps = {
     isIndex: false,
   }

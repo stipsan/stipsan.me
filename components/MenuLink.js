@@ -1,6 +1,5 @@
-import { Component } from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import Router from 'next/router'
 import Link from 'next/link'
 
 const StyledLink = styled.a`
@@ -16,10 +15,18 @@ const StyledLink = styled.a`
   touch-action: manipulation;
 `
 
-export default ({url, href, children}) => <Link href={href}><StyledLink
+const MenuLink = ({url, href, children}) => <Link href={href}><StyledLink
   href={`${href}`}
   isActive={href === url.pathname}
 >
   {children}
 </StyledLink>
 </Link>
+
+MenuLink.propTypes = {
+  url: PropTypes.object.isRequired,
+  href: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+}
+
+export default MenuLink

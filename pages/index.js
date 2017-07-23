@@ -2,8 +2,6 @@ import { Component } from 'react'
 import { Flex, Box } from 'grid-styled'
 
 import Layout from '../components/Layout'
-import Mock from '../components/Mock'
-import Footer from '../components/Footer'
 import Page from '../components/Page'
 import MediumPost from '../components/MediumPost'
 import { goldenRatio } from '../components/dimensions'
