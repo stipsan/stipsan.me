@@ -44,11 +44,13 @@ jobs:
       - *SAVE-SHA
       - *RESTORE-REPO
       - *RESTORE-DEPS
-      - run: yarn eslint:ci
-      - store_test_results:
-          path: ~/project/.reports
-      - store_artifacts:
-          path: ~/project/.reports
+      - run: yarn eslint:workaround
+      # Change to yarn eslint:ci when circleci workflow supports junit
+      #- run: yarn eslint:ci
+      #- store_test_results:
+      #    path: ~/project/.reports
+      #- store_artifacts:
+      #    path: ~/project/.reports
 
   static-analysis:
     docker: *DOCKER
