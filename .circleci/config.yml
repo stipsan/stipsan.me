@@ -60,7 +60,7 @@ jobs:
       - restore_cache:
           keys:
             - v1-repo-{{ checksum ".circle-sha" }}
-      - run: sudo npm i -g now now-purge
+      - run: sudo npm i -g --unsafe-perm now now-purge
       - run: which now-purge
       - run: which now
       - run: now-purge t $NOW_TOKEN
