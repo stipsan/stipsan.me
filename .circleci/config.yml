@@ -43,6 +43,16 @@ jobs:
           paths:
             - ~/project/node_modules
 
+  greenkeeper-lockfile-upload:
+    docker: *DOCKER
+    steps:
+      - *SAVE-SHA
+      - *RESTORE-REPO
+      - *RESTORE-DEPS
+      - run: |
+            sudo npm i -g --unsafe-perm greenkeeper-lockfile@1;
+            greenkeeper-lockfile-upload
+
   eslint:
     docker: *DOCKER
     steps:
@@ -126,6 +136,15 @@ workflows:
           requires:
             - checkout
             - dependencies
+      - greenkeeper-lockfile-upload:
+          requires:
+            - eslint
+            - static-analysis
+            - test
+            - e2e
+          filters:
+            branches:
+              only: /greenkeeper\/.*/
       - deploy:
           requires:
             - checkout
