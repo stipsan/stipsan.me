@@ -33,7 +33,7 @@ jobs:
       - *RESTORE-REPO
       - *RESTORE-DEPS
       - run: |
-          if [[ $CIRCLE_BRANCH == lock* ]]; then
+          if [[ $CIRCLE_BRANCH == greenkeeper/* ]]; then
             sudo npm i -g --unsafe-perm greenkeeper-lockfile@1;
             greenkeeper-lockfile-update
           fi
