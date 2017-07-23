@@ -62,7 +62,7 @@ jobs:
             - v1-repo-{{ checksum ".circle-sha" }}
       - run: sudo npm i -g now now-purge
       - run: now-purge t $NOW_TOKEN
-      - run: now -t $NOW_TOKEN deploy
+      - run: now -t ${NOW_TOKEN} deploy
       - run: now -t $NOW_TOKEN alias
       - run: now -t $NOW_TOKEN scale 1
 
