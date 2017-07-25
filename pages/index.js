@@ -31,6 +31,13 @@ export default class Writings extends Component {
           image:
             'https://cdn-images-1.medium.com/max/2000/1*YwGUh_DRzHKRLEjHspRIcQ.jpeg',
         },
+        {
+          title: 'Best kept Jest secret: Testing only changed files with coverage reports',
+          url:
+            'https://medium.com/@stipsan/best-kept-jest-secret-testing-only-changed-files-with-coverage-reports-3affc8b4d30f',
+          image:
+            'https://cdn-images-1.medium.com/max/1600/1*mOZlz7BwrFkGIruaRTg5yA.png',
+        },
       ],
     }
   }
