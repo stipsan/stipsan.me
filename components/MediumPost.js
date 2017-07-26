@@ -3,8 +3,21 @@ import styled from 'styled-components'
 
 const Wrapper = styled.div`
   border-radius: 8px;
-  box-shadow: rgba(0,0,0,0.4) 0 9px 20px;
   background: white;
+
+  &:before {
+    content: '.';
+    display: block;
+    color: transparent;
+    position: absolute;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    transition: all 0.25s ease-out;
+    box-shadow: 0 16px 32px rgba(14,21,47,0.25), 0 8px 8px rgba(14,21,47,0.25);
+  }
 `
 
 const Link = styled.a`
