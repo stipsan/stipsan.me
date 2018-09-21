@@ -3180,9 +3180,9 @@ pluralize@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-4.0.0.tgz#59b708c1c0190a2f692f1c7618c446b052fd1762"
 
-polished@1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/polished/-/polished-1.3.0.tgz#ae0e26f0297297635fcd70a25a4a0f1947b3af54"
+polished@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/polished/-/polished-2.1.0.tgz#2c34f3c3699cb4de16fb90c5776f84d8bd0a5c10"
 
 postcss-value-parser@^3.3.0:
   version "3.3.0"
