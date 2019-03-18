@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "babel-eslint": "7.2.3",
-    "eslint": "4.3.0",
+    "eslint": "5.15.3",
     "eslint-config-common-sense": "0.0.3",
     "eslint-plugin-react": "7.1.0"
   }
